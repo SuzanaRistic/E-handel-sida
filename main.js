@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const homeRouter = require("./routes/homeRouter");
 const userRouter = require("./routes/userRouter");
+const cookieParser = require("cookie-parser")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 require("dotenv").config();
@@ -21,6 +22,6 @@ const options = {
     });
   });
 
-
+  app.use(cookieParser());
   app.use(homeRouter);
   app.use(userRouter);
