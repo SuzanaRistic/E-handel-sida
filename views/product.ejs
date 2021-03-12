@@ -4,11 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-  </head>
-  <body>
-    <%- include("partials/_category.ejs") %> 
-    <h1><%= product %></h1>
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
-  </body>
+</head>
+<body>
+<%- include("partials/_category.ejs") %>
+<%  for(let i = 0; i < product.length; i++){%>
+    <h1><%= product[i].name %></h1>
+    <h1><%= product[i].price %></h1>
+    <h1><%= product[i].description %></h1>
+<%}%>
+
+<a href="/login">Login</a>
+<a href="/register">Register</a>
+</body>
 </html>

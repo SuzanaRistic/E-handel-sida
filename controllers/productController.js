@@ -3,8 +3,8 @@ const Product = require("../models/productSchema")
 const plantGET = (req, res) => {
     res.render("product.ejs");
 }
-const cactusGET = (req, res) => {
-    const cactus = Product.find({ category: "cactuses" })
+const cactusGET = async (req, res) => {
+    const cactus = await Product.find({ category: "cactuses" })
     res.render("product.ejs", { product: cactus });
     //console.log(cactus);
 }
