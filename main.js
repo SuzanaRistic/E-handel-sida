@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const homeRouter = require("./routes/homeRouter");
 const userRouter = require("./routes/userRouter");
+const productRouter = require("./routes/productRouter");
 const cookieParser = require("cookie-parser")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -25,3 +26,4 @@ const options = {
   app.use(cookieParser());
   app.use(homeRouter);
   app.use(userRouter);
+  app.use(productRouter);
