@@ -3,14 +3,14 @@ const router = express.Router();
 
 const {plantGET, cactusGET, tulipGET, bouquetGET, vaseGET} = require("../controllers/productController")
 
-router.get("/plant", plantGET) 
+router.get("/plants", plantGET) 
 
-router.get("/cactus", cactusGET) 
+router.get("/cactuses", cactusGET) 
 
-router.get("/tulip", tulipGET) 
+router.get("/tulips", tulipGET) 
 
-router.get("/bouquet", bouquetGET) 
+router.get("/bouquets", bouquetGET) 
 
-router.get("/vase", vaseGET) 
+router.get("/vases", vaseGET) 
 
 module.exports = router;
