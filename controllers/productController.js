@@ -1,9 +1,11 @@
+const shoppingCart = require("../middleware/shoppingCart");
 const Product = require("../models/productSchema");
 
 const plantGET = async (req, res) => {
   pagination(req, res, "plants");
 };
 const cactusGET = async (req, res) => {
+    console.log(req.shoppingCart)
   pagination(req, res, "cactuses");
 
 };
@@ -15,14 +17,6 @@ const bouquetGET = async (req, res) => {
 };
 const vaseGET = async (req, res) => {
   pagination(req, res, "vases");
-};
-
-module.exports = {
-  plantGET,
-  cactusGET,
-  tulipGET,
-  bouquetGET,
-  vaseGET,
 };
 
 async function pagination(req, res, category) {
@@ -46,9 +40,24 @@ async function pagination(req, res, category) {
       dataPerPage: dataPerPage,
       totalData: totalData,
       page: page,
+      shoppingCart: req.shoppingCart,
     });
   } catch (err) {
     console.log("ERRRO");
      res.send("asdasd");
   }
 }
+
+const specificGET = async(req, res)=>{
+    const product = await Product.findOne({ _id: req.params.id });
+    
+    res.render("specificProduct.ejs", {product:product, shoppingCart:req.shoppingCart})
+}
+module.exports = {
+    plantGET,
+    cactusGET,
+    tulipGET,
+    bouquetGET,
+    vaseGET,
+    specificGET
+  };
