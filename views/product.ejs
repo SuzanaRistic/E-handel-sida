@@ -7,14 +7,37 @@
 </head>
 <body>
 <%- include("partials/_category.ejs") %>
+<%- include("partials/_shoppingCart.ejs") %>
+<% if(product.length > 0){%>
 <%  for(let i = 0; i < product.length; i++){%>
-    <h1><%= product[i].name %></h1>
-    <h1><%= product[i].price %></h1>
-    <h1><%= product[i].description %></h1>
+    
+   <h1> <a href="/specific/<%=product[i]._id%>"><%= product[i].name %></a></h1>
+   <!--  <h1><%= product[i].price %>
+<h1><%= product[i].name %></h1></h1>
+    <h1><%= product[i].description %></h1> -->
 <%}%>
 
-<a href="/login">Login</a>
-<a href="/register">Register</a>
+
+<% if(totalData !== dataToShow && totalData >= dataToShow){%>
+
+    <a href="/<%=product[0].category%>/?page=<%=(dataToShow/dataPerPage)+1%>">Show more</a>
+
+    <% }else if(totalData <= 2) { %> 
+        <% } else { %>
+    <a href="/<%=product[0].category%>/?page=1">Show fewer</a>
+    <%} %>
+  </div>
+
+  <a href="/<%=product[0].category%>/?page=<%=(dataToShow/dataPerPage)%>&&sorted=1">
+    Sort by A-Z
+  </a>
+  <a href="/<%=product[0].category%>/?page=<%=(dataToShow/dataPerPage)%>&&sorted=-1">
+    Sort by Z-A
+  </a>
+<% } else{ %>
+    <h2>no products</h2>
+<%}%>
+
 </body>
 </html>
 
