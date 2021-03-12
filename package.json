@@ -1,7 +1,6 @@
 {
   "name": "inlupggrupp",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -17,9 +16,19 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start":"nodemon main.js",
+    "start": "nodemon main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuzanaRistic/E-handel-sida.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/SuzanaRistic/E-handel-sida/issues"
+  },
+  "homepage": "https://github.com/SuzanaRistic/E-handel-sida#readme",
+  "description": ""
 }
