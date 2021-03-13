@@ -17,5 +17,8 @@ router.post("/reset", resetSubmit)
 router.get("/reset/:token", resetParams)
 router.post("/resetPasswordForm", resetFormSubmit)
 
+router.get("/logout", async (req,res) => {
+    res.clearCookie("jwtToken").redirect("/login");
+})
 
 module.exports = router;
