@@ -12,7 +12,23 @@ const userSchema = new mongoose.Schema({
   token: String,
 
   tokenExpiration: Date,
+
+  shoppingCart:[{
+    type:mongoose.Schema.ObjectId,
+    ref:"Product"
+  }],
+  wishlist:[{
+    type:mongoose.Schema.ObjectId,
+    ref:"Product"
+  }],
+
 });
+
+
+userSchema.methods.addProductToCart =  function(productId){
+  this.shoppingCart.push(productId);
+  this.save();
+}
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
