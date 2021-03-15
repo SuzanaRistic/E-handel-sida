@@ -32,7 +32,12 @@ catch(err){
     console.log(err)
 }
 }
+
+const logoutGET = async (req,res) => {
+    res.clearCookie("jwToken").redirect("/login");
+}
 module.exports = {
     loginGET,
     loginPOST,
+    logoutGET
 };

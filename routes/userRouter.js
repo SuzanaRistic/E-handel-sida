@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {loginGET, loginPOST} = require("../controllers/loginController.js");
+const {loginGET, loginPOST,logoutGET} = require("../controllers/loginController.js");
 const {registerGET, registerPOST} = require("../controllers/registerController.js");
 const {resetRender, resetSubmit, resetParams, resetFormSubmit} = require("../controllers/resetPasswordController.js");
 const verifyUser = require("../middleware/verifyUser.js");
@@ -17,8 +17,6 @@ router.post("/reset", resetSubmit)
 router.get("/reset/:token", resetParams)
 router.post("/resetPasswordForm", resetFormSubmit)
 
-router.get("/logout", async (req,res) => {
-    res.clearCookie("jwtToken").redirect("/login");
-})
+router.get("/logout", logoutGET)
 
 module.exports = router;
