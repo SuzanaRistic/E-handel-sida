@@ -4,17 +4,17 @@ const mongoose = require("mongoose");
 const User = require("../models/userSchema")
 //Dekodar jwt för att ge tillgång till username osv
 
-const shoppingCart = async(req, res, next)=>
-{const token = req.cookies.jwToken;
-    
-const decoded = jwt.verify(token, process.env.TOKEN_KEY)
+const shoppingCart = async (req, res, next) => {
+    const token = req.cookies.jwToken;
 
-const user = await User.findOne({email: decoded.user.email}).populate({
-    path:"shoppingCart",
-});
-req.shoppingCart = user.shoppingCart;
+    const decoded = jwt.verify(token, process.env.TOKEN_KEY)
 
-next()
+    const user = await User.findOne({ email: decoded.user.email }).populate({
+        path: "shoppingCart",
+    });
+    req.shoppingCart = user.shoppingCart;
+
+    next()
 }
 
 module.exports = shoppingCart;
