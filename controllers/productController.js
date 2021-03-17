@@ -1,11 +1,11 @@
 const shoppingCart = require("../middleware/shoppingCart");
 const Product = require("../models/productSchema");
+const User = require("../models/userSchema")
 
 const plantGET = async (req, res) => {
   pagination(req, res, "plants");
 };
 const cactusGET = async (req, res) => {
-    console.log(req.shoppingCart)
   pagination(req, res, "cactuses");
 
 };
@@ -50,8 +50,19 @@ async function pagination(req, res, category) {
 
 const specificGET = async(req, res)=>{
     const product = await Product.findOne({ _id: req.params.id });
-    
+    //console.log(product)
+   
     res.render("specificProduct.ejs", {product:product, shoppingCart:req.shoppingCart})
+}
+
+const deleteGET = async (req, res)=> {
+  
+ const user = await User.findOne({email:req.user.user.email})
+ let x = req.params.id
+ user.quantity(req.params.id)
+  user.removeProducts(req.params.id)
+  
+  return res.redirect(req.headers.referer)
 }
 module.exports = {
     plantGET,
@@ -59,5 +70,6 @@ module.exports = {
     tulipGET,
     bouquetGET,
     vaseGET,
-    specificGET
+    specificGET,
+    deleteGET
   };
