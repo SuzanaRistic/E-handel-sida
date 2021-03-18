@@ -5,18 +5,19 @@ const User = require("../models/userSchema")
 //Dekodar jwt för att ge tillgång till username osv
 
 const shoppingCart = async (req, res, next) => {
-    const token = req.cookies.jwToken;
-    const decoded = jwt.verify(token, process.env.TOKEN_KEY)
+    try {
+        const token = req.cookies.jwToken;
+        const decoded = jwt.verify(token, process.env.TOKEN_KEY)
 
-    const user = await User.findOne({ email: decoded.user.email }).populate({
-        path: "shoppingCart",
-    });
-    req.shoppingCart = user.shoppingCart;
-    req.email = decoded.user.email
-    next()
-
-
-
+        const user = await User.findOne({ email: decoded.user.email }).populate({
+            path: "shoppingCart",
+        });
+        req.shoppingCart = user.shoppingCart;
+        req.email = decoded.user.email
+        next()
+    } catch (error) {
+        res.send(error)
+    }
 }
 
 module.exports = shoppingCart;
