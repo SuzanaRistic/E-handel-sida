@@ -18,7 +18,7 @@ router.get("/vases",shoppingCart, vaseGET)
 
 router.get("/specific/:id", shoppingCart, specificGET) 
 
-router.get("/addToCart/:id",verifyUser, jwtDecode,shoppingCart,  addToCart, )
+router.get("/addToCart/:id",verifyUser, jwtDecode,  addToCart, )
 
 router.get("/delete/:id", shoppingCart, deleteGET)
 module.exports = router;

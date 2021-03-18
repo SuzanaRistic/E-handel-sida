@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
 });
 
 
-userSchema.methods.addProductToCart =  function(productId){
+/* userSchema.methods.addProductToCart =  function(productId){
   this.shoppingCart.push(productId);
   this.save();
 }
@@ -37,7 +37,7 @@ userSchema.methods.removeProducts = function(productId){
   this.shoppingCart.splice(index, 1);
 
 this.save()
-}
+} */
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
