@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const homeRouter = require("./routes/homeRouter");
 const userRouter = require("./routes/userRouter");
+const adminRouter = require("./routes/adminRouter")
 const productRouter = require("./routes/productRouter");
 const cookieParser = require("cookie-parser")
 app.use(express.json());
@@ -22,8 +23,9 @@ const options = {
       console.log("Portnumber:8000");
     });
   });
-
+  app.use(express.static(__dirname + "/public"))
   app.use(cookieParser());
   app.use(homeRouter);
   app.use(userRouter);
   app.use(productRouter);
+  app.use(adminRouter);

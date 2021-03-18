@@ -33,7 +33,7 @@ async function pagination(req, res, category) {
     const totalData = await Product.find({
       category: category,
     }).countDocuments();
-
+    console.log(plants)
 
     res.render("product.ejs", {
       product: plants,

@@ -8,6 +8,10 @@ const productSchema = new mongoose.Schema({
   description: {type: String, require: true},
 
   price: { type: Number, required: true },
+
+  image:{
+        path:{type:String,required:true}
+  }
 });
 
 //lägga till bilder

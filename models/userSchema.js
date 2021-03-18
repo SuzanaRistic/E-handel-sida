@@ -13,6 +13,8 @@ const userSchema = new mongoose.Schema({
 
   tokenExpiration: Date,
 
+  role:{type:String,required:true,default:"Customer"}
+,
   shoppingCart:[{
     type:mongoose.Schema.ObjectId,
     ref:"Product"
