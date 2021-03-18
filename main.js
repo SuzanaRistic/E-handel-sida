@@ -1,4 +1,5 @@
 const express = require("express");
+const nodeSass = require("node-sass-middleware");
 const app = express();
 const mongoose = require("mongoose");
 const homeRouter = require("./routes/homeRouter");
@@ -21,8 +22,21 @@ const options = {
     if (err) return;
     app.listen(8000, () => {
       console.log("Portnumber:8000");
+      console.log(__dirname)
     });
   });
+  app.use(
+    nodeSass({
+      src: __dirname + "/public/style/scss",
+      dest: __dirname + "/public/style/css",
+      debug: true,
+      outputStyle: "compressed",
+      prefix: "/css",
+    })
+  );
+
+
+
   app.use(express.static(__dirname + "/public"))
   app.use(cookieParser());
   app.use(homeRouter);
