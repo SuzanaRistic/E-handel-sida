@@ -10,7 +10,7 @@ router.get("/plants",shoppingCart,  plantGET)
 
 router.get("/cactuses", shoppingCart, cactusGET) 
 
-router.get("/tulips",shoppingCart, tulipGET) 
+router.get("/tulips",tulipGET,shoppingCart) 
 
 router.get("/bouquets", shoppingCart, bouquetGET) 
 
