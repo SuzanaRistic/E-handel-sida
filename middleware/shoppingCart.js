@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const mongoose = require("mongoose");
+const Cart = require("../models/cartSchema");
 const User = require("../models/userSchema")
 //Dekodar jwt för att ge tillgång till username osv
 
@@ -9,10 +10,11 @@ const shoppingCart = async(req, res, next)=>
     
 const decoded = jwt.verify(token, process.env.TOKEN_KEY)
 
-const user = await User.findOne({email: decoded.user.email}).populate({
-    path:"shoppingCart",
-});
-req.shoppingCart = user.shoppingCart;
+const user = await User.findOne({email: decoded.user.email})
+
+let cart = await Cart.findOne({ userId: user._id }).populate("products.productId");
+console.log(cart.products)
+req.shoppingCart = cart.products;
 req.email = decoded.user.email
 next()
 }
