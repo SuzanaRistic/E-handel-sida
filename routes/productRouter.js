@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const {plantGET, cactusGET, tulipGET, bouquetGET, vaseGET, specificGET} = require("../controllers/productController")
+const {plantGET, cactusGET, tulipGET, bouquetGET, vaseGET, specificGET, deleteGET} = require("../controllers/productController")
 const addToCart = require("../controllers/shoppingCartController");
 const verifyUser = require("../middleware/verifyUser");
 const jwtDecode = require("../middleware/decodeUser");
@@ -20,4 +20,5 @@ router.get("/specific/:id", shoppingCart, specificGET)
 
 router.get("/addToCart/:id",verifyUser, jwtDecode,shoppingCart,  addToCart, )
 
+router.get("/delete/:id", shoppingCart, deleteGET)
 module.exports = router;

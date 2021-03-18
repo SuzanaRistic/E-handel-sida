@@ -6,15 +6,17 @@ const User = require("../models/userSchema")
 
 const shoppingCart = async (req, res, next) => {
     const token = req.cookies.jwToken;
-
     const decoded = jwt.verify(token, process.env.TOKEN_KEY)
 
     const user = await User.findOne({ email: decoded.user.email }).populate({
         path: "shoppingCart",
     });
     req.shoppingCart = user.shoppingCart;
-
+    req.email = decoded.user.email
     next()
+
+
+
 }
 
 module.exports = shoppingCart;
