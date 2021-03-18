@@ -13,7 +13,7 @@ const user = await User.findOne({email: decoded.user.email}).populate({
     path:"shoppingCart",
 });
 req.shoppingCart = user.shoppingCart;
-
+req.email = decoded.user.email
 next()
 }
 

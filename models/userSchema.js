@@ -30,5 +30,12 @@ userSchema.methods.addProductToCart =  function(productId){
   this.save();
 }
 
+userSchema.methods.removeProducts = function(productId){
+  const index = this.shoppingCart.indexOf(productId);
+  this.shoppingCart.splice(index, 1);
+
+this.save()
+}
+
 const User = mongoose.model("User", userSchema);
 module.exports = User;
