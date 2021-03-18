@@ -6,7 +6,7 @@ const plantGET = async (req, res) => {
   pagination(req, res, "plants");
 };
 const cactusGET = async (req, res) => {
-    console.log(req.shoppingCart)
+    
   pagination(req, res, "cactuses");
 
 };
@@ -33,7 +33,7 @@ async function pagination(req, res, category) {
     const totalData = await Product.find({
       category: category,
     }).countDocuments();
-    console.log(plants)
+  
 
     res.render("product.ejs", {
       product: plants,
@@ -55,17 +55,8 @@ const specificGET = async(req, res)=>{
     res.render("specificProduct.ejs", {product:product, shoppingCart:req.shoppingCart})
 }
 
-const deleteGET = async (req, res)=> {
-  
-  const user = await User.findOne({email:req.email});
-  user.removeProducts(req.params.id)
- /*  let x = req.params.id
-  user.quantity(req.params.id) */
-  // user.removeProducts(req.params.id)
-   
-   return res.redirect(req.headers.referer)
- }
- 
+
+
 module.exports = {
     plantGET,
     cactusGET,
@@ -73,5 +64,5 @@ module.exports = {
     bouquetGET,
     vaseGET,
     specificGET,
-    deleteGET
+    
   };
