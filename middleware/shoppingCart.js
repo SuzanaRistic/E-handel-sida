@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const mongoose = require("mongoose");
-const User = require("../models/userSchema")
+const { User } = require("../models/userSchema")
 //Dekodar jwt för att ge tillgång till username osv
 
 const shoppingCart = async (req, res, next) => {

@@ -1,5 +1,5 @@
 const { findOne } = require("../models/userSchema");
-const User = require("../models/userSchema")
+const { User } = require("../models/userSchema")
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 
@@ -24,7 +24,8 @@ const loginPOST = async (req, res) => {
             if (!cookie) {
                 res.cookie("jwToken", jwToken, { maxAge: 604800000, httpOnly: true })
             }
-            return res.redirect("/")
+            console.log(user)
+            return res.render("index.ejs")
         }
 
     }

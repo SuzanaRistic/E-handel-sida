@@ -1,6 +1,6 @@
 const shoppingCart = require("../middleware/shoppingCart");
 const Product = require("../models/productSchema");
-const User = require("../models/userSchema")
+const { User } = require("../models/userSchema")
 
 const plantGET = async (req, res) => {
     pagination(req, res, "plants");
