@@ -8,12 +8,15 @@ const User = require("../models/userSchema")
 const shoppingCart = async(req, res, next)=>
 
 
-{const token = req.cookies.jwToken;
-    
-const decoded = jwt.verify(token, process.env.TOKEN_KEY)
-
-const user = await User.findOne({email: decoded.user.email})
+{
 try{
+
+    const token = req.cookies.jwToken;
+    
+    const decoded = jwt.verify(token, process.env.TOKEN_KEY)
+    
+    const user = await User.findOne({email: decoded.user.email})
+
     let cart = await Cart.findOne({ userId: user._id }).populate("products.productId");
   
     req.shoppingCart = cart.products;
