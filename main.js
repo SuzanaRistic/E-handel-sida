@@ -37,7 +37,7 @@ const options = {
 
 
 
-  app.use(express.static(__dirname + "/public"))
+  app.use(express.static(__dirname + "/public/style"))
   app.use(cookieParser());
   app.use(homeRouter);
   app.use(userRouter);
