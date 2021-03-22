@@ -1,20 +1,20 @@
 const { findOne } = require("../models/userSchema");
-const { User, validateUser } = require("../models/userSchema")
+const { User } = require("../models/userSchema")
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 
 require("dotenv").config();
 const loginGET = (req, res) => {
-    res.render("login.ejs")
+    res.render("login.ejs", { error: "" })
 }
 const loginPOST = async (req, res) => {
     const { email, password } = req.body;
 
     try {
         const user = await User.findOne({ email: email })
-        if (!user) return res.redirect("/register")
+        if (!user) return res.render("login.ejs", { error: "Email not found" })
         const validUser = await bcrypt.compare(password, user.password);
-        if (!validUser) return res.redirect("/login")
+        if (!validUser) return res.render("login.ejs", { error: "Invalid password" })
 
         const jwToken = await jwt.sign({ user: user }, process.env.TOKEN_KEY)
 
@@ -27,16 +27,20 @@ const loginPOST = async (req, res) => {
             console.log(user)
             return res.redirect("/")
         }
-
     }
-    catch (err) {
-        res.send(err)
-        console.log(err)
+    catch (error) {
+        res.render("login.ejs", { error: "Login failed, try again" })
+        console.log(error)
     }
 }
 
 const logoutGET = async (req, res) => {
-    res.clearCookie("jwToken").redirect("/login");
+    try {
+        res.clearCookie("jwToken").redirect("/");
+
+    } catch (error) {
+        res.render("index.ejs", { error: "Logout failed" })
+    }
 }
 module.exports = {
     loginGET,

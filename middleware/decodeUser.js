@@ -3,13 +3,18 @@ require("dotenv").config();
 
 //Dekodar jwt för att ge tillgång till username osv
 
-const jwtDecode = (req, res, next)=>
-{const token = req.cookies.jwToken;
-    
-const decoded = jwt.verify(token, process.env.TOKEN_KEY)
+const jwtDecode = (req, res, next) => {
+    try {
+        const token = req.cookies.jwToken;
 
-req.email = decoded.user.email;
-req.decoded =decoded;
-next()
+        const decoded = jwt.verify(token, process.env.TOKEN_KEY)
+
+        req.email = decoded.user.email;
+        req.decoded = decoded;
+        next()
+    } catch (error) {
+        return res.status(404).render("login.ejs", { error: "Log in as admin to gain access" })
+    }
+
 }
 module.exports = jwtDecode;

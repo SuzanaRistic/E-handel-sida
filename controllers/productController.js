@@ -36,6 +36,7 @@ async function pagination(req, res, category) {
 
 
         res.render("product.ejs", {
+            error: "",
             product: plants,
             dataToShow: dataToShow,
             dataPerPage: dataPerPage,
@@ -43,16 +44,25 @@ async function pagination(req, res, category) {
             page: page,
             shoppingCart: req.shoppingCart,
         });
-    } catch (err) {
-        console.log("ERRRO");
-        res.send(err);
+    } catch (error) {
+        res.render("product.ejs", { error: error });
     }
 }
 
 const specificGET = async (req, res) => {
-    const product = await Product.findOne({ _id: req.params.id });
 
-    res.render("specificProduct.ejs", { product: product, shoppingCart: req.shoppingCart })
+    try {
+        const product = await Product.findOne({ _id: req.params.id });
+
+        res.render("specificProduct.ejs", {
+            error: "",
+            product: product,
+            shoppingCart: req.shoppingCart
+        })
+    } catch (error) {
+        res.render("product.ejs", { error: "Product not found" })
+    }
+
 }
 
 const deleteGET = async (req, res) => {

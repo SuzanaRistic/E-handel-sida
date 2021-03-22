@@ -11,7 +11,12 @@
     <%- include("partials/_category.ejs") %>
     <%if (shoppingCart){%>
         <%- include("partials/_shoppingCart.ejs") %> 
-      <%}%>
+    <%}%>
+
+    <%if(error!=""){%>
+        <%- include("partials/_error.ejs") %>
+    <%}%>
+    
     <h1><%=product.name%></h1>
     <span><%=product.price%></span>
     <span><%=product.description%></span>

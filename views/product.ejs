@@ -8,8 +8,13 @@
 </head>
 <body>
 <%- include("partials/_category.ejs") %>
+
 <%if (shoppingCart){%>
   <%- include("partials/_shoppingCart.ejs") %> 
+<%}%>
+
+<%if(error!=""){%>
+  <%- include("partials/_error.ejs") %>
 <%}%>
 
 <% if(product.length > 0){%>

@@ -6,7 +6,7 @@ const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const resetRender = (req, res) => {
-  res.render("reset.ejs", { err: "" });
+  res.render("reset.ejs", { error: "" });
 };
 
 const resetSubmit = async (req, res) => {
@@ -14,7 +14,7 @@ const resetSubmit = async (req, res) => {
 
   const user = await User.findOne({ email: email });
 
-  if (!user) return res.redirect("/register");
+  if (!user) return res.render("register.ejs", { error: "User not found, register an account" });
 
   const token = await crypto.randomBytes(32).toString("hex");
 
@@ -37,7 +37,7 @@ const resetSubmit = async (req, res) => {
       console.error(error);
     });
 
-  res.render("checkMail.ejs");
+  res.render("checkMail.ejs", { error: "" });
 };
 
 const resetParams = async (req, res) => {

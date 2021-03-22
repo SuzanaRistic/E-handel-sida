@@ -8,6 +8,11 @@ const registerGET = (req, res) => {
 const registerPOST = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
+  const existingEmail = await User.findOne({ email: req.body.email })
+  if (existingEmail) {
+    res.render('register.ejs', { error: "Email already registered" })
+  }
+
   const { error } = validateUser(req.body)
   if (error) return res.render("register.ejs", { error: error.details[0].message });
 

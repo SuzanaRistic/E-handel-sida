@@ -2,6 +2,7 @@ const { User } = require("../models/userSchema");
 const Product = require("../models/productSchema");
 const mongoose = require("mongoose");
 const Cart = require("../models/cartSchema");
+
 const addToCart = async (req, res) => {
   const userId = req.decoded.user._id;
   const productId = req.params.id;
@@ -39,8 +40,9 @@ const addToCart = async (req, res) => {
     cart = await cart.save();
 
     return res.redirect(req.headers.referer);
-  } catch (err) {
-    if (err) return console.log(err + "EREOREOREOREOEORO");
+  } catch (error) {
+    res.render("product.ejs", { error: error })
+    if (error) return console.log(error + "Add to cart error");
   }
 };
 const incrementProduct = async (req, res) => {
@@ -88,4 +90,10 @@ const deleteGET = async (req, res) => {
   cart = await cart.save();
   return res.redirect(req.headers.referer)
 }
-module.exports = { addToCart, incrementProduct, decrementProduct, deleteGET };
+
+module.exports = {
+  addToCart,
+  incrementProduct,
+  decrementProduct,
+  deleteGET
+};
