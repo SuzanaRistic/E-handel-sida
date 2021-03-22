@@ -8,6 +8,11 @@
     <link href="/css/main.css" rel="stylesheet" />
 </head>
 <body>
+
+    <%if(error!=""){%>
+        <%- include("partials/_error.ejs") %>
+    <%}%>
+    
     <form method="POST" action="/login">
 
     <input type="email" name="email" id="" placeholder="Email">

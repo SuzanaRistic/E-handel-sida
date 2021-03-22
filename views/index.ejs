@@ -9,6 +9,11 @@
 </head>
 <body>
     <%- include("partials/_category.ejs") %>
+
+    <%if(error!=""){%>
+        <%- include("partials/_error.ejs") %>
+    <%}%>
+    
     <a href="/logout">Log out</a>
 </body>
 </html>

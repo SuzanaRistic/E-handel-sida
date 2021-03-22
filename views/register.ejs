@@ -8,6 +8,11 @@
     <link href="/css/main.css" rel="stylesheet" />
 </head>
 <body>
+
+    <%if(error!=""){%>
+        <%- include("partials/_error.ejs") %>
+    <%}%>
+
     <form method="POST" action="/register">
     <input type="text" name="firstName" id="" placeholder="First name">
     <input type="text" name="lastName" id="" placeholder="Last name">
@@ -19,8 +24,6 @@
     
     </form>
     <span>Already a member?</span><a href="/login">Login!</a>
-    <% if(err){%>
-        <%=err%>
-    <%}%>
+
 </body>
 </html>

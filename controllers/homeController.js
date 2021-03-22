@@ -1,9 +1,5 @@
-
-
-
-const homeGET = (req, res)=> {
-    res.render("index.ejs")
+const homeGET = (req, res) => {
+    res.render("index.ejs", { error: "" })
 }
-
 
 module.exports = homeGET;

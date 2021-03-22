@@ -1,12 +1,12 @@
-const User = require("../models/userSchema");
+const { User } = require("../models/userSchema");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 
 const sgMail = require("@sendgrid/mail");
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const resetRender = (req, res) => {
-  res.render("reset.ejs", { err: "" });
+  res.render("reset.ejs", { error: "" });
 };
 
 const resetSubmit = async (req, res) => {
@@ -14,31 +14,31 @@ const resetSubmit = async (req, res) => {
 
   const user = await User.findOne({ email: email });
 
-  if (!user) return res.redirect("/register");
+  if (!user) return res.render("register.ejs", { error: "User not found, register an account" });
 
   const token = await crypto.randomBytes(32).toString("hex");
 
   user.token = token;
   user.tokenExpiration = Date.now() + 3600000;
   await user.save();
-  
-    const msg = {
-        to: user.email,
-        from: process.env.EMAIL_USER,
-        subject: "Requested new password",
-        html: `<h2> Click <a href="http://localhost:8000/reset/${user.token}" > <b>here</b> </a> to reset password </h2>`,
-        };
-        sgMail
-        .send(msg)
-        .then(() => {
-        console.log("Email sent");
-        })
-        .catch((error) => {
-        console.error(error);
-        });
-        
-        res.render("checkMail.ejs");
-        };
+
+  const msg = {
+    to: user.email,
+    from: process.env.EMAIL_USER,
+    subject: "Requested new password",
+    html: `<h2> Click <a href="http://localhost:8000/reset/${user.token}" > <b>here</b> </a> to reset password </h2>`,
+  };
+  sgMail
+    .send(msg)
+    .then(() => {
+      console.log("Email sent");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
+  res.render("checkMail.ejs", { error: "" });
+};
 
 const resetParams = async (req, res) => {
   const token = req.params.token;
