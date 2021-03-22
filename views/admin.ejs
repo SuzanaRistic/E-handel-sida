@@ -5,8 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="/css/main.css" rel="stylesheet" />
 </head>
 <body>
+
+    <%if(error!=""){%>
+        <%- include("partials/_error.ejs") %>
+    <%}%>
+
     <form method="POST" action="/admin"enctype="multipart/form-data">
     <input type="text" name="name" placeholder="Name">
     <input type="text" name="category" placeholder="Category">

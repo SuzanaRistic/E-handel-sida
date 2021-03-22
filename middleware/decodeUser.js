@@ -9,6 +9,7 @@ const jwtDecode = (req, res, next)=>
 const decoded = jwt.verify(token, process.env.TOKEN_KEY)
 
 req.email = decoded.user.email;
+req.decoded =decoded;
 next()
 }
 module.exports = jwtDecode;

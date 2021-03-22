@@ -1,12 +1,12 @@
 const shoppingCart = require("../middleware/shoppingCart");
-const Product = require("../models/productSchema");
+const { Product, validateProduct } = require("../models/productSchema");
 const { User } = require("../models/userSchema")
 
 const plantGET = async (req, res) => {
     pagination(req, res, "plants");
 };
 const cactusGET = async (req, res) => {
-    console.log(req.shoppingCart)
+
     pagination(req, res, "cactuses");
 
 };
@@ -33,7 +33,7 @@ async function pagination(req, res, category) {
         const totalData = await Product.find({
             category: category,
         }).countDocuments();
-        console.log(plants)
+
 
         res.render("product.ejs", {
             product: plants,

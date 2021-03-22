@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link href="/css/main.css" rel="stylesheet" />
 </head>
 <body>
 <%- include("partials/_category.ejs") %>
-<%- include("partials/_shoppingCart.ejs") %>
+<%if (shoppingCart){%>
+  <%- include("partials/_shoppingCart.ejs") %> 
+<%}%>
+
 <% if(product.length > 0){%>
 <%  for(let i = 0; i < product.length; i++){%>
     

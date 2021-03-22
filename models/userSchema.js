@@ -29,7 +29,7 @@ function validateUser(user) {
   return schema.validate(user)
 }
 
-userSchema.methods.addProductToCart = function (productId) {
+/* userSchema.methods.addProductToCart =  function(productId){
   this.shoppingCart.push(productId);
   this.save();
 }
@@ -37,8 +37,9 @@ userSchema.methods.addProductToCart = function (productId) {
 userSchema.methods.removeProducts = function (productId) {
   const index = this.shoppingCart.indexOf(productId);
   this.shoppingCart.splice(index, 1);
-  this.save()
-}
+
+this.save()
+} */
 
 const User = mongoose.model("User", userSchema);
 module.exports = {

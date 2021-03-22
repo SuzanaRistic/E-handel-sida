@@ -10,7 +10,7 @@ const adminGET = async (req, res) => {
     if (user.role !== "Admin") {
         return res.redirect("/")
     }
-    res.render("admin.ejs")
+    res.render("admin.ejs", { error: "" })
 }
 
 
