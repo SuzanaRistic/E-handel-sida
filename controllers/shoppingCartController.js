@@ -2,6 +2,9 @@ const User = require("../models/userSchema");
 const Product = require("../models/productSchema");
 const mongoose = require("mongoose");
 const Cart = require("../models/cartSchema");
+
+
+
 const addToCart = async (req, res) => {
   const userId = req.decoded.user._id;
   const productId = req.params.id;
@@ -27,28 +30,32 @@ const addToCart = async (req, res) => {
     quantity += 1;
     cart.products[index].quantity = quantity;
     cart = await cart.save();
-  
+ 
     return res.redirect(req.headers.referer);
   } catch (err) {
     if (err) return console.log(err + "EREOREOREOREOEORO");
   }
 };
 const incrementProduct = async (req, res) => {
-
+  console.log(req.total)
+  
   //console.log(req.userFull)
   let cart = await Cart.findOne({ userId: req.userFull.user._id });
-  console.log(cart)
+  //console.log(loop(req.shoppingCart,cart))
   let productId = req.params.id;
   let index = cart.products.findIndex((x) => x._id == productId);
-  console.log(index)
+
+
   let quantity = cart.products[index].quantity;
   quantity += 1;
   cart.products[index].quantity = quantity;
+
+
   cart = await cart.save();
   return res.redirect(req.headers.referer)
 };
 const decrementProduct = async (req, res) => {
-
+  
     //console.log(req.userFull)
     let cart = await Cart.findOne({ userId: req.userFull.user._id });
     console.log(cart)
@@ -78,4 +85,10 @@ const deleteGET = async(req, res)=> {
     cart = await cart.save();
     return res.redirect(req.headers.referer)
 }
+
+
+
+ 
 module.exports = { addToCart, incrementProduct,decrementProduct,deleteGET};
+
+

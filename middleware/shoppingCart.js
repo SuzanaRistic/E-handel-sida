@@ -16,13 +16,24 @@ const shoppingCart = async (req, res, next) => {
     let cart = await Cart.findOne({ userId: user._id }).populate(
       "products.productId"
     );
-    console.log(cart.products);
-   
+   // let productTotal = loop(cart.products)
+ 
+ 
+   // console.log(productsTotal)
 
-    //console.log(cart.products)
-    req.shoppingCart = cart.products;
+   loop(cart)
+
+  console.log(cart.products.length)
+    req.shoppingCart = cart;
     req.email = decoded.user.email;
     req.userFull = decoded;
+    if (cart.products.length === 0){
+      cart.total = 0
+    }
+    
+    cart = await cart.save()
+  
+  
   } catch (err) {
     console.log(err);
   }
@@ -32,11 +43,37 @@ const shoppingCart = async (req, res, next) => {
 
 module.exports = shoppingCart;
 
-/* async function loop(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    let productTotal = arr[i].quantity * arr[i].productId.price;
-    console.log(productTotal);
-    return productTotal;
+ async function loop(cart) {
+  for (let i = 0; i < cart.products.length; i++) {
+   /*  let productTotal = arr[i].quantity * arr[i].productId.price;
+    console.log(productTotal)
+    return productTotal; */
+   
+    cart.products[i].productTotal = cart.products[i].quantity * cart.products[i].productId.price
+    let map1 = cart.products.map(x => x.productTotal);
+    let total = map1.reduce((a,b)=>a+b,0)
+    
+    cart.total = total
+    
+    console.log(cart)
+  
+    
+ 
+
+
   }
 }
- */
+ 
+/* async function totalGen(user){
+  let cart = await Cart.findOne({ userId: user._id }).populate(
+    "products.productId"
+  );
+
+  return total */
+
+/* 
+let map1 = cart.products.map(x => x.productTotal);
+let total = map1.reduce((a,b)=>a+b,0)
+return total
+console.log(total)
+//return total */
