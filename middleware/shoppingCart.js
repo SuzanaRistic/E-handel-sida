@@ -6,6 +6,7 @@ const User = require("../models/userSchema");
 //Dekodar jwt för att ge tillgång till username osv
 
 const shoppingCart = async (req, res, next) => {
+
   try {
     const token = req.cookies.jwToken;
 
