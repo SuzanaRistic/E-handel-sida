@@ -1,7 +1,12 @@
-<% for(let i = 0; i < shoppingCart.length; i++){%>
-    <p><%=shoppingCart[i].productId.name%></p>
-    <p><%=shoppingCart[i].quantity%></p>
-    <a href="/inc/<%=shoppingCart[i]._id%>">+</a>
-    <a href="/dec/<%=shoppingCart[i]._id%>">-</a>
-    <a href="/delete/<%=shoppingCart[i]._id%>">delete</a>
+<% for(let i = 0; i < shoppingCart.products.length; i++){%>
+    <p><%=shoppingCart.products[i].productId.name%></p>
+    <p><%=shoppingCart.products[i].quantity%> QUANTITY</p>
+    <p><%=shoppingCart.products[i].productId.price%> PRICE</p>
+    <p><%=shoppingCart.products[i].productTotal%> PR TOTAL</p>
+    <a href="/inc/<%=shoppingCart.products[i]._id%>">+</a>
+    <a href="/dec/<%=shoppingCart.products[i]._id%>">-</a>
+    <a href="/delete/<%=shoppingCart.products[i]._id%>">delete</a>
+ 
 <%}%> 
+<p><%=shoppingCart.total%></p>
+
