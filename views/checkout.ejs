@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+</head>
+<body>
+    <h1> Checkout </h1>
+    <div>
+        Shopping cart <br>
+
+
+        <span>Forgot something?</span><a href="/">Keep shopping!</a>
+
+
+    <h2> Information </h2>
+    <form action="/checkout" method="POST">
+        <input type="email" name="email" id="" placeholder="Email">        
+        <input type="text" name="firstname" id="" placeholder="First name">        
+        <input type="text" name="lastname" id="" placeholder="Last name">        
+        <input type="text" name="addressLine1" id="" placeholder="Address Line 1">        
+        <input type="text" name="addressLine2" id="" placeholder="Address Line 2">        
+
+    </form>
+
+    <h2> Delivery options </h2>
+
+    <form action="/checkout" method="POST">
+        <input type="radio"><p> DHL ombud <strong> 79kr </strong></p>
+        <input type="radio"><p> Budbee hemleverans <strong> 129kr </strong></p>
+        <input type="radio"><p> DHL hemleverans <strong> 149kr </strong></p>
+    </form>
+
+    <button> Confirm purchase </button>
+</body>
+</html>

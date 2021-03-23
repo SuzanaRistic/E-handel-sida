@@ -15,6 +15,7 @@ const shoppingCart = async (req, res, next) => {
         req.shoppingCart = cart.products;
         req.email = decoded.user.email
         req.userFull = decoded;
+        console.log(req.shoppingCart)
     }
     catch (err) {
         console.log(err)
