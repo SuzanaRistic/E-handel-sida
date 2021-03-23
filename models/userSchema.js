@@ -9,10 +9,7 @@ const userSchema = new mongoose.Schema({
   token: String,
   tokenExpiration: Date,
   role: { type: String, required: true, default: "Customer" },
-  shoppingCart: [{
-    type: mongoose.Schema.ObjectId,
-    ref: "Product"
-  }],
+
   wishlist: [{
     type: mongoose.Schema.ObjectId,
     ref: "Product"

@@ -10,15 +10,16 @@
     <script type="text/javscript" src="../clientside.js"></script>
 </head>
 <body>
-    <%- include("partials/_category.ejs") %>
-<<<<<<< HEAD
-
-    <%if(error!=""){%>
-        <%- include("partials/_error.ejs") %>
-    <%}%>
-    
-    <a href="/logout">Log out</a>
-=======
->>>>>>> design
+    <div class="home-box"><a href="/" class="home-button">Plant Shop</a>
+        <a class="login-button" href="/login">Login</a>
+         <a class="register-button" href="/register">Register</a>
+         <a class="logout-button" href="/logout">Log out</a></div>
+ <nav class="body-page">
+     <div class="category-box plant-box"><div class="category-button-box"><a href="/plants" class="category-button">Potted plants</a></div></div>
+     <div class="category-box cactuses-box"><div class="category-button-box"><a href="/cactuses" class="category-button"> Cactuses</a></div></div>
+     <div class="category-box tulips-box"><div class="category-button-box"><a href="/tulips" class="category-button"> Tulips</a></div></div>
+     <div class="category-box bouquets-box"><div class="category-button-box"><a href="/bouquets" class="category-button"> Bouquets</a></div></div>
+     <div class="category-box vases-box"><div class="category-button-box"><a href="/vases" class="category-button"> Vases & Pots</a></div></div>
+ </nav>
 </body>
 </html>

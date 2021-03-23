@@ -1,15 +1,15 @@
-const { User } = require('../models/userSchema');
+const { User } = require("../models/userSchema");
 
 const adminGET = async (req, res) => {
-    console.log(req.email)
-    const user = await User.findOne({ email: req.email })
+  console.log(req.email);
+  const user = await User.findOne({ email: req.email });
 
-    if (user.role !== "Admin") {
-        return res.render("index.ejs", { error: "Access denied" })
-    }
-    res.render("admin.ejs", { error: "" })
-}
+  if (user.role !== "Admin") {
+    return res.render("index.ejs", { error: "Access denied" });
+  }
+  res.render("admin.ejs", { error: "" });
+};
 
 module.exports = {
-    adminGET
-}
+  adminGET,
+};
