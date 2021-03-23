@@ -7,16 +7,6 @@ const addToCart = async (req, res) => {
   const userId = req.decoded.user._id;
   const productId = req.params.id;
 
-  /*   const addToCart = async (req, res) => {
-      console.log(req.email)
-      const user = await User.findOne({ email: req.email });
-  
-      const product = await Product.findOne({ _id: req.params.id });
-      console.log(product)
-      user.addProductToCart(product);
-      res.redirect(req.headers.referer)
-  } */
-
   try {
     let cart = await Cart.findOne({ userId: userId });
 

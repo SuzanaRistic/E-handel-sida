@@ -2,26 +2,22 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const Cart = require("../models/cartSchema");
-const {User,validateUser} = require("../models/userSchema");
-//Dekodar jwt för att ge tillgång till username osv
+const { User } = require("../models/userSchema");
 
 const shoppingCart = async (req, res, next) => {
-
   try {
     const token = req.cookies.jwToken;
 
     const decoded = jwt.verify(token, process.env.TOKEN_KEY);
-    console.log(decoded)
+    console.log(decoded);
     const user = await User.findOne({ email: decoded.user.email });
 
     let cart = await Cart.findOne({ userId: user._id }).populate(
       "products.productId"
     );
 
+    genTotal(cart);
 
-    loop(cart);
-
-    console.log(cart.products.length);
     req.shoppingCart = cart;
     req.email = decoded.user.email;
     req.userFull = decoded;
@@ -37,17 +33,19 @@ const shoppingCart = async (req, res, next) => {
   next();
 };
 
-module.exports = shoppingCart;
 
-async function loop(cart) {
+async function genTotal(cart) {
   for (let i = 0; i < cart.products.length; i++) {
     cart.products[i].productTotal =
-      cart.products[i].quantity * cart.products[i].productId.price;
+    cart.products[i].quantity * cart.products[i].productId.price;
+
     let map1 = cart.products.map((x) => x.productTotal);
     let total = map1.reduce((a, b) => a + b, 0);
 
     cart.total = total;
 
-    console.log(cart);
   }
 }
+
+
+module.exports = shoppingCart;

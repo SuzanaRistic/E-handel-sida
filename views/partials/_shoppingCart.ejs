@@ -2,11 +2,11 @@
     <p><%=shoppingCart.products[i].productId.name%></p>
     <p><%=shoppingCart.products[i].quantity%> QUANTITY</p>
     <p><%=shoppingCart.products[i].productId.price%> PRICE</p>
-    <p><%=shoppingCart.products[i].productTotal%> PR TOTAL</p>
+
     <a href="/inc/<%=shoppingCart.products[i]._id%>">+</a>
     <a href="/dec/<%=shoppingCart.products[i]._id%>">-</a>
     <a href="/delete/<%=shoppingCart.products[i]._id%>">delete</a>
  
 <%}%> 
 <p><%=shoppingCart.total%></p>
-
+<a href="/checkout">checkout</a>
