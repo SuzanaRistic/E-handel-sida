@@ -10,33 +10,27 @@
 </head>
 <body>
     <div id="login-bkg">
-   
-    <div id="login-container">
- 
-    <header id="banner">
-        <h1>Plantshop</h1>
-    </header>
-    <div id="login-error-box">
-        <p>asdsadasdsaas</p>
-    </div>
-      
-    <%if(error!=""){%>
-      
-        <%- include("partials/_error.ejs") %>
-
-    <%}%>
+        <div id="login-container">
+            <header id="banner">
+                <h1>Plantshop</h1>
+            </header>
+            <div id="login-error-box">
+                <p>asdsadasdsaas</p>
+                      
+                <%if(error!=""){%>
+                    <%- include("partials/_error.ejs") %>
+                <%}%>
+            </div>
         
-    <form method="POST" action="/login">
-
-    <input type="email" name="email" id="" placeholder="Email">
-    <input type="password" name="password" id="" placeholder="Password">
-
-    <button>Login</button>
-    
-    </form>
-    <span>Not a member?</span><a href="/register">Register!</a>
-    <span>Forgot your passord?</span><a href="/reset">Reset password!</a>
-</div>
-</div>
+            <form method="POST" action="/login">
+                <input type="email" name="email" id="" placeholder="Email">
+                <input type="password" name="password" id="" placeholder="Password">
+                <button>Login</button>
+            </form>
+            
+            <span>Not a member?</span><a href="/register">Register!</a>
+            <span>Forgot your passord?</span><a href="/reset">Reset password!</a>
+        </div>
+    </div>
 </body>
 </html>

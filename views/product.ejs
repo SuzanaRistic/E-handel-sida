@@ -23,12 +23,14 @@
 <% if(product.length > 0){%>
 <%  for(let i = 0; i < product.length; i++){%>
   <div class="product-container">
-    <div class="image-container">
-      <img src="/images/<%=product[i].image.path%>">
-    </div>
-    <div class="product-info-container">
-      <h3> <a href="/specific/<%=product[i]._id%>"><%= product[i].name %></a></h3>
-      <p class="product-price"><%= product[i].price %> SEK</p>
+    <a href="/specific/<%=product[i]._id%>">
+      <div class="image-container">
+        <img src="/images/<%=product[i].image.path%>">
+      </div>
+      <div class="product-info-container">
+       <h3> <%= product[i].name %></h3>
+       <p class="product-price"><%= product[i].price %> SEK</p>
+      </a>
     </div>
   </div>
   <%}%>
