@@ -1,6 +1,6 @@
-@import './mixins';
-@import './variables';
+@import "./imports";
 @import './home';
+@import "./login";
 
 body{
    background-color: white;
