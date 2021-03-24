@@ -1,7 +1,7 @@
-@import './mixins';
-@import './variables';
+@import "./imports";
 @import './home';
 @import './product';
+@import "./login";
 
 * {
    box-sizing: border-box;
