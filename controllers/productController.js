@@ -32,6 +32,8 @@ async function pagination(req, res, category) {
       category: category,
     }).countDocuments();
 
+    console.log(req.shoppingCart)
+
     res.render("product.ejs", {
       error: "",
       product: plants,
