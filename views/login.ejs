@@ -9,11 +9,19 @@
     <link href="/css/main.css" rel="stylesheet" />
 </head>
 <body>
-    <div id="login-bkg">
-        <div id="login-container">
-            <header id="banner">
+    <div class="user-handling-bkg">
+        <div class="user-handling-container">
+            <header class="user-handling-banner">
                 <h1>Plantshop</h1>
             </header>
+
+            <div class="user-handling-error-box">
+            
+                      
+                <%if(error!=""){%>
+                    <%- include("partials/_error.ejs") %>
+                <%}%>
+            </div>
 
         
             <form method="POST" action="/login">
