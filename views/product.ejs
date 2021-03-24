@@ -8,6 +8,7 @@
     <script src="../clientside.js"></script>
 </head>
 <body>
+
 <%- include("partials/_category.ejs") %>
 
 <%if (shoppingCart){%>
@@ -46,7 +47,7 @@
     Sort by Z-A
   </a>
 <% } else{ %>
-    <h2>no products</h2>
+    <h2 class="no-products-header">no products</h2>
 <%}%>
 
 </body>
