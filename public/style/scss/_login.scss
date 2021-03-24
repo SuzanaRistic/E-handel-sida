@@ -1,6 +1,6 @@
 @import "./imports";
 
-#login-bkg {
+.user-handling-bkg {
   background-image: linear-gradient(
       rgba(255, 255, 255, 0.8),
       rgba(255, 255, 255, 0.8)
@@ -11,14 +11,14 @@
   height: 100%;
   width: 100%;
 
-  #login-container {
+  .user-handling-container{
     display: flex;
     flex-direction: column;
     align-items: center;
 
     height: 100%;
 
-    #banner {
+    .user-handling-banner {
       background-image: url("../img/Bakgrund/background-image.jpeg");
       width: 100%;
       text-align: center;
@@ -29,12 +29,33 @@
         margin: 20px 0 10px 0;
       }
     }
-    #login-error-box {
+    .user-handling-error-box {
       width: auto;
+      height: 7%;
     }
     form {
       display: flex;
       flex-direction: column;
+      //border: 1px solid black;
+      background-color: white;
+ 
+      input,button{
+          margin: 1px;
+          border: 0;
+          font-size: 1rem;
+          background-color: rgb(236, 229, 229)
+         
+      }
+
+      button{
+        height: 25px;
+        background-color:$light-green-buttons;
+        
+    }
+      input:focus{
+          outline: none;
+          color: none;
+      }
     }
   }
 }
