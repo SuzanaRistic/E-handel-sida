@@ -19,15 +19,22 @@
   <%- include("partials/_error.ejs") %>
 <%}%>
 
+<div class="category-container">
 <% if(product.length > 0){%>
 <%  for(let i = 0; i < product.length; i++){%>
-    
-   <h1> <a href="/specific/<%=product[i]._id%>"><%= product[i].name %></a></h1>
-   <img src="/images/<%=product[i].image.path%>">
-    <!--  <h1><%= product[i].price %>
-    <h1><%= product[i].name %></h1></h1>
-    <h1><%= product[i].description %></h1> -->
-<%}%>
+  <div class="product-container">
+    <div class="image-container">
+      <img src="/images/<%=product[i].image.path%>">
+    </div>
+    <div class="product-info-container">
+      <h3> <a href="/specific/<%=product[i]._id%>"><%= product[i].name %></a></h3>
+      <p class="product-price"><%= product[i].price %> SEK</p>
+    </div>
+  </div>
+  <%}%>
+</div>
+
+
 
 
 <% if(totalData !== dataToShow && totalData >= dataToShow){%>
