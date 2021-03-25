@@ -8,24 +8,19 @@ const checkoutPOST = async (req, res) => {
   try {
     const {
       deliveryOption,
-      email,
-      firstName,
-      lastName,
-      addressLine1,
-      adressLine2,
+     
     } = req.body;
 
-    if (!deliveryOption || !email || !firstName || !lastName || !addressLine1)
+    if (!deliveryOption)
       return res.render("checkout.ejs", {
         shoppingCart: req.shoppingCart,
         error: "Please enter all fields",
       });
     let cart = await Cart.findOne({ userId: req.shoppingCart.userId });
-
-    if (cart.total < 500) {
+   
       cart.deliveryFee = deliveryOption;
       cart = await cart.save();
-    }
+   
     res.redirect("/payment");
   } catch (err) {
     console.log(err);
@@ -37,35 +32,31 @@ const checkoutPOST = async (req, res) => {
 const paymentGET = async (req, res) => {
 
    let cart = req.shoppingCart.populate("products.productId");
-    //console.log(cart.products)
-    let paymentArr = []
-    console.log(cart.products)
-    for (let i = 0; i < cart.products.length; i++){
-    
-      console.log(cart.products[i].quantity)
-      paymentArr.push({product:cart.products[i].productId, quantity:cart.products[i].quantity})
-      }
-    
-    console.log(paymentArr)
+  console.log(cart.deliveryFee)
 
 const session=    await stripe.checkout.sessions.create({
-    success_url: 'http://localhost:8002/shoppingSuccess',
+    success_url: 'http://localhost:8000/shoppingSuccess',
     cancel_url: 'http://localhost:8000/checkout',
     payment_method_types: ['card'],
-    line_items: paymentArr.map( product => {
+    shipping_rates: [cart.deliveryFee],
+    shipping_address_collection: {
+      allowed_countries: ['SE'],
+    },
+    line_items: cart.products.map( product => {
 
         return {
-            name: product.product.name, 
-            amount:  product.product.price* 100, 
+            name: product.productId.name, 
+            amount:  product.productId.price* 100, 
             quantity: product.quantity , 
             currency: "sek"
         }
     }
-    ),
+    ) , 
   mode: 'payment',
   
-}) 
-console.log(session.Id)
+})
+session.total_details.amount_shipping = cart.deliveryFee;
+console.log(session)
 res.render("payment.ejs", {sessionId:session.id})
 }; 
 

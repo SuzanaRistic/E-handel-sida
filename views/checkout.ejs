@@ -11,6 +11,7 @@
  
     <div class="checkout-container">
         <h1> Checkout </h1>
+        <p>Please review your order before procceeding to payment</p>
         <%if(error!=""){%>
             <%- include("partials/_error.ejs") %>
         <%}%>
@@ -34,23 +35,16 @@
         <span>Forgot something?</span><a href="/">Keep shopping!</a>
     
 
-    <h2> Information </h2>
-    <form action="/checkout" method="POST">
-        <input type="email" name="email" id="" placeholder="Email">        
-        <input type="text" name="firstName" id="" placeholder="First name">        
-        <input type="text" name="lastName" id="" placeholder="Last name">        
-        <input type="text" name="addressLine1" id="" placeholder="Address Line 1">        
-        <input type="text" name="addressLine2" id="" placeholder="Address Line 2">        
 
     
 
     <h2> Delivery options </h2>
-
+       <form action="/checkout" method="POST">
   
-        <input type="radio" value="79" name="deliveryOption"><p> DHL ombud <strong> 79kr </strong></p>
-        <input type="radio" value="129" name="deliveryOption"><p> Budbee hemleverans <strong> 129kr </strong></p>
-        <input type="radio" value="149" name="deliveryOption"><p> DHL hemleverans <strong> 149kr </strong></p>
-        <button> Confirm purchase </button>
+        <input type="radio" value="shr_1IYub7BE1mfx14b2yBIZoV46" name="deliveryOption"><p> DHL ombud <strong> 79kr </strong></p>
+        <input type="radio" value="shr_1IYuaeBE1mfx14b2rf2SUV6K" name="deliveryOption"><p> Budbee hemleverans <strong> 129kr </strong></p>
+        <input type="radio" value="shr_1IYuZgBE1mfx14b2eFBbUzzV" name="deliveryOption"><p> DHL hemleverans <strong> 149kr </strong></p>
+        <button> Proceed to payment </button>
     </form>
 
 

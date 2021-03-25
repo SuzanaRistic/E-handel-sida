@@ -13,7 +13,7 @@ const cartSchema = new mongoose.Schema({
     },
   ],
   total:{type:Number,default:0},
-  deliveryFee:{type:Number,default:0}
+  deliveryFee:{type:String,default:0}
 });
 
 const Cart = mongoose.model("cart", cartSchema);
