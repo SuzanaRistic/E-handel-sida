@@ -31,6 +31,7 @@ const checkoutPOST = async (req, res) => {
     console.log(err);
     res.render("checkout.ejs", { error: err, shoppingCart: req.shoppingCart });
   }
+  res.redirect("/payment")
 };
 
 const paymentGET = async (req, res) => {
@@ -38,28 +39,29 @@ const paymentGET = async (req, res) => {
    let cart = req.shoppingCart.populate("products.productId");
     //console.log(cart.products)
     let paymentArr = []
-    console.log(typeof cart.products)
+    console.log(cart.products)
     for (let i = 0; i < cart.products.length; i++){
     
-  
-      paymentArr.push(cart.products[i].productId)
+      console.log(cart.products[i].quantity)
+      paymentArr.push({product:cart.products[i].productId, quantity:cart.products[i].quantity})
       }
     
     console.log(paymentArr)
 
 const session=    await stripe.checkout.sessions.create({
     success_url: 'http://localhost:8002/shoppingSuccess',
-    cancel_url: 'https://example.com/cancel',
+    cancel_url: 'http://localhost:8000/checkout',
     payment_method_types: ['card'],
-    line_items: paymentArr.map( productId => {
+    line_items: paymentArr.map( product => {
 
         return {
-            name: productId.name, 
-            amount:  productId.price* 100, 
-            quantity: 1 , 
+            name: product.product.name, 
+            amount:  product.product.price* 100, 
+            quantity: product.quantity , 
             currency: "sek"
         }
-    }), 
+    }
+    ),
   mode: 'payment',
   
 }) 

@@ -10,20 +10,18 @@
     <script src="https://js.stripe.com/v3/"></script>
 
 </head>
-<body>
-    <div id="payment-container">
-       <button></button>
-        </div>
-</body>
+
 </html>
 
 <script>
 
     var stripe = Stripe('pk_test_51ILqTtBE1mfx14b2vz8NAsWUEu0RMHcMroYSBdQxsx1tGUeAASOSxeDtRvvmPYBIxkLJZGO6YYc4GQNi7iGjs3F000r2mpZOEl');
     
-    document.querySelector("button").addEventListener( "click", ()=>{
+    window.onload = function(){
         stripe.redirectToCheckout({ sessionId: "<%=sessionId %>" });
-    })
+    }
+
+ 
     
     
     </script>
