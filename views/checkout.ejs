@@ -5,11 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
+    <link href="/css/main.css" rel="stylesheet" />
 </head>
 <body>
-    <h1> Checkout </h1>
-    <div>
-        Shopping cart <br>
+ 
+    <div class="checkout-container">
+        <h1> Checkout </h1>
+       <div class="shoppingcart-checkout">
+
+        <% for(let i = 0; i < shoppingCart.products.length; i++){%>
+            <p><%=shoppingCart.products[i].productId.name%></p>
+            <p><%=shoppingCart.products[i].quantity%> QUANTITY</p>
+            <p><%=shoppingCart.products[i].productId.price%> PRICE</p>
+            <img src="/images/<%=shoppingCart.products[i].productId.image.path%>">
+        <%}%>
+        <p><%=shoppingCart.total%></p>
+
+       </div>
 
 
         <span>Forgot something?</span><a href="/">Keep shopping!</a>
@@ -34,5 +46,8 @@
     </form>
 
     <button> Confirm purchase </button>
+  
+      
+  
 </body>
 </html>
