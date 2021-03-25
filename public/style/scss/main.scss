@@ -1,17 +1,14 @@
 @import "./imports";
 @import './home';
-<<<<<<< HEAD
 @import './navbar';
-=======
 @import './product';
 @import "./login";
-
+@import "./checkout";
 
 * {
    box-sizing: border-box;
 
 }
->>>>>>> 48051cd409326144f11d975b33dee7d162a60f69
 
 body{
    background-color: white;
