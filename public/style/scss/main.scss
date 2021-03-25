@@ -1,7 +1,17 @@
-@import './mixins';
-@import './variables';
+@import "./imports";
 @import './home';
+<<<<<<< HEAD
 @import './navbar';
+=======
+@import './product';
+@import "./login";
+
+
+* {
+   box-sizing: border-box;
+
+}
+>>>>>>> 48051cd409326144f11d975b33dee7d162a60f69
 
 body{
    background-color: white;
@@ -9,4 +19,5 @@ body{
    margin: 0;
    padding: 0;
    height: 100vh;
+   
 }

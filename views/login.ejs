@@ -5,23 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
     <link href="/css/main.css" rel="stylesheet" />
 </head>
 <body>
+    <div class="user-handling-bkg">
+        <div class="user-handling-container">
+            <header class="user-handling-banner">
+                <h1>Plantshop</h1>
+            </header>
 
-    <%if(error!=""){%>
-        <%- include("partials/_error.ejs") %>
-    <%}%>
-    
-    <form method="POST" action="/login">
+            <div class="user-handling-error-box">
+            
+                      
+                <%if(error!=""){%>
+                    <%- include("partials/_error.ejs") %>
+                <%}%>
+            </div>
 
-    <input type="email" name="email" id="" placeholder="Email">
-    <input type="password" name="password" id="" placeholder="Password">
-
-    <button>Login</button>
-    
-    </form>
-    <span>Not a member?</span><a href="/register">Register!</a>
-    <span>Forgot your passord?</span><a href="/reset">Reset password!</a>
+        
+            <form method="POST" action="/login">
+                <input type="email" name="email" id="" placeholder="Email">
+                <input type="password" name="password" id="" placeholder="Password">
+                <button>Login</button>
+            </form>
+            
+            <span>Not a member?</span><a href="/register">Register!</a>
+            <span>Forgot your passord?</span><a href="/reset">Reset password!</a>
+        </div>
+    </div>
 </body>
 </html>

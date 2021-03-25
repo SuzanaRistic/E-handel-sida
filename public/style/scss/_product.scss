@@ -1,0 +1,114 @@
+@import './variables';
+
+.product-page-wrapper {
+    background-color: rgb(214, 185, 132);
+    min-height: 100vh;
+    padding: 2rem 0;
+
+    .sort-container {
+        display: flex;
+        justify-content: flex-end;
+        padding-bottom: 5vh;
+        
+        a {
+            margin-right: 10px;
+            color: white;
+        }
+    }
+    .product-list-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0 7%;
+        width: 100%;
+
+        .product-container {
+            display: flex;
+            flex-direction: column;
+            width: 45%;
+            margin-bottom: 10px;
+            line-height: 0,5;
+
+            &:last-child,
+            &:nth-last-child(2):nth-child(odd){
+                margin-right: auto;
+                margin-left: 0;
+            }
+    
+            a {
+                text-decoration: none;
+                color: black;
+    
+                .image-container {
+                    position: relative;
+                    width: 100%;
+                    overflow: hidden;
+        
+                    img {
+                        position: absolute;
+                        top:      0;
+                        left:     0;
+                        bottom:   0;
+                        right:    0;
+        
+                        object-fit: cover;
+                        width: 100%;
+                        min-height: 100%;
+                    }
+                }
+                .image-container:before {
+                    content:     "";
+                    display:     block;
+                    padding-top: 120%;
+                }
+        
+                .product-info-container {
+                    display: flex;
+                    flex-direction: column;
+        
+                    h3 {
+                        color: rgba(0, 0, 0, 0.667);
+                    }
+        
+                    .product-price {
+                       color: rgba(0, 0, 0, 0.456);
+                    }
+                }
+            }
+        }
+    }
+
+    .pagination-container{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        
+        a {
+            color: white;
+        }
+    }
+
+    .no-products-header {
+        text-align: center;
+        padding-top: 20vh;
+        color: white;
+    }
+}
+
+
+
+
+
+
+
+
+/* .product-price {
+    color: red;
+    display: none;
+}
+
+&:hover {
+    .product-price {
+        display: block;
+    }
+} */

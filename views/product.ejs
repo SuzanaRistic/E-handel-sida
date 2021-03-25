@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,46 +9,54 @@
     <script src="../clientside.js"></script>
 </head>
 <body>
-<%- include("partials/_category.ejs") %>
-
+  <div class="product-page-wrapper">
+    <header>
+      <%- include("partials/_category.ejs") %>
 <%if (shoppingCart){%>
   <%- include("partials/_shoppingCart.ejs") %> 
 <%}%>
-
+</header>
 <%if(error!=""){%>
   <%- include("partials/_error.ejs") %>
 <%}%>
-
 <% if(product.length > 0){%>
-<%  for(let i = 0; i < product.length; i++){%>
-    
-   <h1> <a href="/specific/<%=product[i]._id%>"><%= product[i].name %></a></h1>
-   <img src="/images/<%=product[i].image.path%>">
-    <!--  <h1><%= product[i].price %>
-    <h1><%= product[i].name %></h1></h1>
-    <h1><%= product[i].description %></h1> -->
-<%}%>
-
-
-<% if(totalData !== dataToShow && totalData >= dataToShow){%>
-
-    <a href="/<%=product[0].category%>/?page=<%=(dataToShow/dataPerPage)+1%>">Show more</a>
-
-    <% }else if(totalData <= 2) { %> 
-        <% } else { %>
-    <a href="/<%=product[0].category%>/?page=1">Show fewer</a>
-    <%} %>
+  <div class="sort-container">
+    <a href="/<%=product[0].category%>/?page=<%=(dataToShow/dataPerPage)%>&&sorted=1">
+      Sort by A-Z
+    </a>
+    <a href="/<%=product[0].category%>/?page=<%=(dataToShow/dataPerPage)%>&&sorted=-1">
+      Sort by Z-A
+    </a>
   </div>
-
-  <a href="/<%=product[0].category%>/?page=<%=(dataToShow/dataPerPage)%>&&sorted=1">
-    Sort by A-Z
-  </a>
-  <a href="/<%=product[0].category%>/?page=<%=(dataToShow/dataPerPage)%>&&sorted=-1">
-    Sort by Z-A
-  </a>
-<% } else{ %>
-    <h2>no products</h2>
-<%}%>
-
+  <div class="product-list-container">
+    <%  for(let i = 0; i < product.length; i++){%>
+      <div class="product-container">
+        <a href="/specific/<%=product[i]._id%>">
+          <div class="image-container">
+            <img src="/images/<%=product[i].image.path%>">
+          </div>
+          <div class="product-info-container">
+           <h3> <%= product[i].name %></h3>
+           <p class="product-price"><%= product[i].price %> SEK</p>
+          </div>
+        </a>
+      </div>
+    <%}%>
+    
+    <div class="pagination-container">
+      <% if(totalData !== dataToShow && totalData >= dataToShow){%>
+    
+        <a href="/<%=product[0].category%>/?page=<%=(dataToShow/dataPerPage)+1%>">Show more</a>
+    
+        <% }else if(totalData <= 2) { %> 
+            <% } else { %>
+        <a href="/<%=product[0].category%>/?page=1">Show fewer</a>
+        <%} %>
+    </div>
+    <% } else{ %>
+        <h2 class="no-products-header">no products :-)</h2>
+    <%}%>
+    </div>
+</div>
 </body>
 </html>

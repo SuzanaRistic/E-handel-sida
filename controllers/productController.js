@@ -23,14 +23,16 @@ async function pagination(req, res, category) {
   const sorted = +req.query.sorted || 1;
 
   try {
-    const dataPerPage = 2;
-    const dataToShow = page + page;
+    const dataPerPage = 6;
+    const dataToShow = page * dataPerPage;
     const plants = await Product.find({ category: category })
       .limit(dataToShow)
       .sort({ name: sorted });
     const totalData = await Product.find({
       category: category,
     }).countDocuments();
+
+    console.log(req.shoppingCart)
 
     res.render("product.ejs", {
       error: "",
