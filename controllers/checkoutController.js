@@ -1,5 +1,7 @@
 const Cart = require("../models/cartSchema");
 const stripe = require("stripe")("sk_test_51ILqTtBE1mfx14b2FNCEVEBkNVi3bGoj2lHcF1SIk71VB0AbZWvBLVcedSCeO18gpfvuOx7J5MHq1wzG16EvqnZn0030wbwYCJ")
+const {User} = require("../models/userSchema")
+const crypto = require("crypto");
 const checkoutGET = async (req, res) => {
   res.render("checkout.ejs", { error: "", shoppingCart: req.shoppingCart });
 };
@@ -32,10 +34,18 @@ const checkoutPOST = async (req, res) => {
 const paymentGET = async (req, res) => {
 
    let cart = req.shoppingCart.populate("products.productId");
+   let user = await User.findOne({email:req.email})
   console.log(cart.deliveryFee)
+  console.log(cart.userId)
+
+  const token = await crypto.randomBytes(32).toString("hex");
+ 
+  user.token = token;
+
+  await user.save();
 
 const session=    await stripe.checkout.sessions.create({
-    success_url: 'http://localhost:8000/shoppingSuccess',
+    success_url: 'http://localhost:8000/order/success/' + token,
     cancel_url: 'http://localhost:8000/checkout',
     payment_method_types: ['card'],
     shipping_rates: [cart.deliveryFee],
@@ -56,13 +66,22 @@ const session=    await stripe.checkout.sessions.create({
   
 })
 session.total_details.amount_shipping = cart.deliveryFee;
-console.log(session)
+
+
 res.render("payment.ejs", {sessionId:session.id})
 }; 
 
-const paymentPOST = async(req,res)=>{
-    
-}
+const shoppingSuccessGET =  async (req, res) => {
+  let user = await User.findOne({email:req.email})
+  
+  if (req.params.token != user.token) return res.redirect("/")
+  user.token = "placeholder"
+  user = await user.save()
+  let cart = await Cart.findOne({userId:user.id})
+  cart.expended = true;
+  cart =  await cart.save()
+  res.send("aksndlasnd")
 
+};
 
-module.exports = { checkoutGET, checkoutPOST, paymentGET,paymentPOST };
+module.exports = { checkoutGET, checkoutPOST, paymentGET ,shoppingSuccessGET};

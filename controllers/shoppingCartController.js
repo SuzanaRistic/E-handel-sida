@@ -9,8 +9,8 @@ const addToCart = async (req, res) => {
 
   try {
     let cart = await Cart.findOne({ userId: userId });
-
-    if (!cart) {
+    
+    if (!cart || cart.expended != false) {
       let cart = await new Cart({ userId: userId }).save();
       cart.products.push({ productId: productId, quantity: 1 });
       cart = await cart.save();
