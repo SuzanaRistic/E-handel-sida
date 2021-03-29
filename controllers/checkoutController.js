@@ -41,7 +41,7 @@ const paymentGET = async (req, res) => {
   const token = await crypto.randomBytes(32).toString("hex");
  
   user.token = token;
-
+  user.tokenExpiration = Date.now() + 36000;
   await user.save();
 
 const session=    await stripe.checkout.sessions.create({
@@ -73,12 +73,18 @@ res.render("payment.ejs", {sessionId:session.id})
 
 const shoppingSuccessGET =  async (req, res) => {
   let user = await User.findOne({email:req.email})
-  
-  if (req.params.token != user.token || user == null) return res.redirect("/")
+  let cart = await Cart.findOne({userId:user.id})
+  console.log(cart)
+ try {if (req.params.token != user.token || user == null) return res.redirect("/")
   user.token = "placeholder"
   user = await user.save()
+  console.log(user)
 
-  res.send("aksndlasnd")
+}
+catch(err){
+    res.redirect("/")
+}
+  res.render("shopSuccess.ejs")
 
 };
 
