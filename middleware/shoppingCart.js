@@ -10,18 +10,19 @@ const shoppingCart = async (req, res, next) => {
     const token = req.cookies.jwToken;
 
     const decoded = jwt.verify(token, process.env.TOKEN_KEY);
-    console.log(decoded);
+  
     const user = await User.findOne({ email: decoded.user.email });
-
+  
     let cart = await Cart.findOne({ userId: user._id }).populate(
       "products.productId"
     );
-
+ 
     genTotal(cart);
 
     req.shoppingCart = cart;
     req.email = decoded.user.email;
     req.userFull = decoded;
+    console.log(decoded)
     if (cart.products.length === 0) {
       cart.total = 0;
     }
