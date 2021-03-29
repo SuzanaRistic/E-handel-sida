@@ -12,10 +12,11 @@
   <div class="product-page-wrapper">
     <header>
       <%- include("partials/_category.ejs") %>
+    </header>
+
 <%if (shoppingCart){%>
   <%- include("partials/_shoppingCart.ejs") %> 
 <%}%>
-</header>
 <%if(error!=""){%>
   <%- include("partials/_error.ejs") %>
 <%}%>
@@ -54,7 +55,10 @@
         <%} %>
     </div>
     <% } else{ %>
-        <h2 class="no-products-header">no products :-)</h2>
+      <div class="no-products-div">
+        <p> No products </p>
+        <a href="/"> Homepage </a>
+      </div>
     <%}%>
     </div>
 </div>

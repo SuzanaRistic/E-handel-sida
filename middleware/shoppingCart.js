@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const Cart = require("../models/cartSchema");
 const { User } = require("../models/userSchema");
 
+
 const shoppingCart = async (req, res, next) => {
   try {
     const token = req.cookies.jwToken;
@@ -37,7 +38,7 @@ const shoppingCart = async (req, res, next) => {
 async function genTotal(cart) {
   for (let i = 0; i < cart.products.length; i++) {
     cart.products[i].productTotal =
-    cart.products[i].quantity * cart.products[i].productId.price;
+      cart.products[i].quantity * cart.products[i].productId.price;
 
     let map1 = cart.products.map((x) => x.productTotal);
     let total = map1.reduce((a, b) => a + b, 0);
