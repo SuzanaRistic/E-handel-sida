@@ -74,7 +74,7 @@ res.render("payment.ejs", {sessionId:session.id})
 const shoppingSuccessGET =  async (req, res) => {
   let user = await User.findOne({email:req.email})
   
-  if (req.params.token != user.token) return res.redirect("/")
+  if (req.params.token != user.token || user == null) return res.redirect("/")
   user.token = "placeholder"
   user = await user.save()
   let cart = await Cart.findOne({userId:user.id})

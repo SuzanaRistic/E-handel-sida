@@ -12,9 +12,9 @@
   <div class="product-page-wrapper">
     <header>
       <%- include("partials/_category.ejs") %>
-<%if (shoppingCart || shoppingCart.expended != true){%>
+
   <%- include("partials/_shoppingCart.ejs") %> 
-<%}%>
+
 </header>
 <%if(error!=""){%>
   <%- include("partials/_error.ejs") %>
