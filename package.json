@@ -33,6 +33,8 @@
     "url": "https://github.com/SuzanaRistic/E-handel-sida/issues"
   },
   "homepage": "https://github.com/SuzanaRistic/E-handel-sida#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "node-sass": "^5.0.0"
+  },
   "description": ""
 }
