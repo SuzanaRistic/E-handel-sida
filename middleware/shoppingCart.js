@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const Cart = require("../models/cartSchema");
 const { User } = require("../models/userSchema");
 
-
 const shoppingCart = async (req, res, next) => {
   try {
     const token = req.cookies.jwToken;
