@@ -77,9 +77,7 @@ const shoppingSuccessGET =  async (req, res) => {
   if (req.params.token != user.token || user == null) return res.redirect("/")
   user.token = "placeholder"
   user = await user.save()
-  let cart = await Cart.findOne({userId:user.id})
-  cart.expended = true;
-  cart =  await cart.save()
+
   res.send("aksndlasnd")
 
 };
