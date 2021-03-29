@@ -9,24 +9,29 @@
  
 </head>
 <body>
-    <%- include("partials/_category.ejs") %>
-    <%if (shoppingCart){%>
+    <header>
+        <%- include("partials/_category.ejs") %>
+    </header>
+    <div class="specific-page-container">
+        <%if (shoppingCart){%>
+            <%- include("partials/_shoppingCart.ejs") %> 
+        <%}%>
     
-        <%- include("partials/_shoppingCart.ejs") %> 
-    <%}%>
+        <%if(error!=""){%>
+            <%- include("partials/_error.ejs") %>
+        <%}%>
 
-    <%if(error!=""){%>
-        <%- include("partials/_error.ejs") %>
-    <%}%>
+        <div class="specific-product-container">
+        <img id="specificImage" src="/images/<%=product.image.path%>">
     
-    <h1><%=product.name%></h1>
-    <span><%=product.price%></span>
-    <span><%=product.description%></span>
-  
-
-    <img src="/images/<%=product.image.path%>">
-   
-    <a href="/addToCart/<%=product._id%>"">Add to cart</a>
+            <div class="product-information">
+                <h1><%=product.name%></h1>         
+                <p id="price"><%=product.price%> SEK</p>
+                <span><%=product.description%></span>
+                <a id="add-to-cart" href="/addToCart/<%=product._id%>"">Add to cart</a>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="../clientside.js"></script>
 </html>

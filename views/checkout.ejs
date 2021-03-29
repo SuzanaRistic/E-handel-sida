@@ -6,18 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link href="/css/main.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
+
 </head>
 <body>
- 
-    <div class="checkout-container">
+ <div class="user-handling-bkg">
+    <div class="user-handling-container">
+        <div class="user-handling-banner">
         <h1> Checkout </h1>
+    </div>
+        <p>Please review your order before procceeding to payment</p>
+        <%if(error!=""){%>
+            <%- include("partials/_error.ejs") %>
+        <%}%>
        <div class="shoppingcart-checkout">
 
         <% for(let i = 0; i < shoppingCart.products.length; i++){%>
-            <p><%=shoppingCart.products[i].productId.name%></p>
-            <p><%=shoppingCart.products[i].quantity%> QUANTITY</p>
-            <p><%=shoppingCart.products[i].productId.price%> PRICE</p>
-            <img src="/images/<%=shoppingCart.products[i].productId.image.path%>">
+            <li class="product-box-cart">
+            <img class="product-image-cart" src="/images/<%=shoppingCart.products[i].productId.image.path%>">
+            <div class="cart-text-div">
+            <h3 class="product-title-cart"><%=shoppingCart.products[i].productId.name%></h3>
+            <p class="product-quantity-cart">Qnty <%=shoppingCart.products[i].quantity%> </p>
+            <p class="product-price-cart"><%=shoppingCart.products[i].productId.price%>:-</p>
+            <div class="incrementor-div">
+            <a href="/inc/<%=shoppingCart.products[i]._id%>">+</a>
+            <a href="/dec/<%=shoppingCart.products[i]._id%>">-</a>
+        </div>
+        </div>
+ <div class="cart-delete-div">
+    <a href="/delete/<%=shoppingCart.products[i]._id%>">delete</a>
+</div>
+</li>
         <%}%>
         <p><%=shoppingCart.total%></p>
 
@@ -25,28 +44,22 @@
 
 
         <span>Forgot something?</span><a href="/">Keep shopping!</a>
+    
 
 
-    <h2> Information </h2>
-    <form action="/checkout" method="POST">
-        <input type="email" name="email" id="" placeholder="Email">        
-        <input type="text" name="firstname" id="" placeholder="First name">        
-        <input type="text" name="lastname" id="" placeholder="Last name">        
-        <input type="text" name="addressLine1" id="" placeholder="Address Line 1">        
-        <input type="text" name="addressLine2" id="" placeholder="Address Line 2">        
-
-    </form>
+    
 
     <h2> Delivery options </h2>
-
-    <form action="/checkout" method="POST">
-        <input type="radio"><p> DHL ombud <strong> 79kr </strong></p>
-        <input type="radio"><p> Budbee hemleverans <strong> 129kr </strong></p>
-        <input type="radio"><p> DHL hemleverans <strong> 149kr </strong></p>
+       <form action="/checkout" method="POST">
+  
+        <input type="radio" value="shr_1IYub7BE1mfx14b2yBIZoV46" name="deliveryOption"><p> DHL ombud <strong> 79kr </strong></p>
+        <input type="radio" value="shr_1IYuaeBE1mfx14b2rf2SUV6K" name="deliveryOption"><p> Budbee hemleverans <strong> 129kr </strong></p>
+        <input type="radio" value="shr_1IYuZgBE1mfx14b2eFBbUzzV" name="deliveryOption"><p> DHL hemleverans <strong> 149kr </strong></p>
+        <button> Proceed to payment </button>
     </form>
 
-    <button> Confirm purchase </button>
-  
+
+</div>
       
   
 </body>

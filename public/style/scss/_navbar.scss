@@ -1,6 +1,7 @@
 @import './variables';
 
-.nav-bar {
+@mixin nav-bar-mixin {
+    .nav-bar {
     background-color: $bg-color;
     height: 30px;
     display: flex;
@@ -17,5 +18,6 @@
     text-decoration: $clean;
     color: $bt-color;
     font-family: Optima, sans-serif;
-    font-size: 20px;
+    font-size: 15px;
+}   
 }

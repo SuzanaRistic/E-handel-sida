@@ -12,7 +12,9 @@ const cartSchema = new mongoose.Schema({
       productTotal:{type:Number, default:0}
     },
   ],
-  total:{type:Number,default:0}
+  total:{type:Number,default:0},
+  deliveryFee:{type:String,default:0},
+
 });
 
 const Cart = mongoose.model("cart", cartSchema);
