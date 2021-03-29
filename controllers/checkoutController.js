@@ -2,6 +2,12 @@ const Cart = require("../models/cartSchema");
 const stripe = require("stripe")("sk_test_51ILqTtBE1mfx14b2FNCEVEBkNVi3bGoj2lHcF1SIk71VB0AbZWvBLVcedSCeO18gpfvuOx7J5MHq1wzG16EvqnZn0030wbwYCJ")
 const {User} = require("../models/userSchema")
 const crypto = require("crypto");
+
+const sgMail = require("@sendgrid/mail");
+
+
+
+
 const checkoutGET = async (req, res) => {
   res.render("checkout.ejs", { error: "", shoppingCart: req.shoppingCart });
 };
@@ -79,6 +85,21 @@ const shoppingSuccessGET =  async (req, res) => {
   user.token = "placeholder"
   user = await user.save()
   console.log(user)
+  const msg = {
+
+    to: user.email,
+    from: process.env.EMAIL_USER,
+    subject: "Requested new password",
+    html: `<h2> Click <a href="http://localhost:8000/reset/${user.token}" > <b>here</b> </a> to reset password </h2>`,
+  };
+  sgMail
+    .send(msg)
+    .then(() => {
+      console.log("Email sent");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 
 }
 catch(err){
