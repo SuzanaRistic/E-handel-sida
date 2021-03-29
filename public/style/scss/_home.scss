@@ -22,7 +22,7 @@
 
 }
 
-.login-button, .register-button, .logout-button {
+.login-button, .register-button, .logout-button, .wishlist-button {
     font-family: Optima, sans-serif;
     font-size: 10px;
     letter-spacing: 0;
@@ -30,7 +30,7 @@
     
     }
 
-.home-button, .category-button, .login-button, .register-button, .logout-button {
+.home-button, .category-button, .login-button, .register-button, .logout-button, .wishlist-button {
     color: $bt-color;
     text-decoration: $clean;
 }

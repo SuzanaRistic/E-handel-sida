@@ -1,39 +1,76 @@
 @import './variables';
+@import './navbar';
+@import './mixins';
 
 .product-page-wrapper {
-    background-color: rgb(215, 196, 157);
+    background-image: url('../img/Bakgrund/background-image.jpeg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+
     min-height: 100vh;
+    overflow: hidden;
+    width: 100%;
+
     padding: 2rem 0;
+
+    header {
+        @include nav-bar-mixin;
+        @include banner;
+        width: 100%;
+    }
 
     .sort-container {
         display: flex;
         justify-content: flex-end;
+        padding: 0 7%;
         padding-bottom: 5vh;
         
         a {
-            margin-right: 10px;
+            font-size: smaller;
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+            margin: 5px;
+            width: 80px;
+            text-decoration: none;
+            text-align: center;
             color: white;
+            letter-spacing: 2px;
+            box-shadow: 2px 2px 2px  rgb(136, 136, 136);
+            background-color: rgb(179, 179, 179);
+            transition: 0.2s ease-in;
+
+            &:hover {
+                color: rgb(104, 104, 104);
+            }
+            &:active {
+                background-color: rgb(83, 83, 83);
+                box-shadow: 1px 1px 1px  rgb(68, 68, 68);
+            }  
         }
     }
     .product-list-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        align-self: center;
+        //justify-content: space-around;
+        width: 90%;
         padding: 0 7%;
-        width: 100%;
-
+        
         .product-container {
             display: flex;
             flex-direction: column;
             width: 45%;
+            max-width: 165px;
             margin-bottom: 10px;
-            line-height: 0,5;
+            margin-left: auto;
+            margin-right: auto;
 
-            &:last-child,
+/*             &:last-child,
             &:nth-last-child(2):nth-child(odd){
-                margin-right: auto;
-                margin-left: 0;
-            }
+                background-color: green;
+            } */
     
             a {
                 text-decoration: none;
@@ -65,6 +102,8 @@
                 .product-info-container {
                     display: flex;
                     flex-direction: column;
+                    overflow: hidden;
+
         
                     h3 {
                         color: rgba(0, 0, 0, 0.667);
@@ -84,20 +123,38 @@
         width: 100%;
         
         a {
-            color: white;
+            color: black;
         }
     }
 
-    .no-products-header {
+    .no-products-div {
         text-align: center;
         padding-top: 20vh;
-        color: white;
+
+        p {
+            font-size: xx-large;
+            color: rgb(104, 104, 104);
+        }
+
+        a {
+            color: rgb(104, 104, 104);
+        }
+    }
+}
+/* @media screen and (min-width: 768px) {
+    .product-container {
+        width: 50%;
+
     }
 }
 
+@media screen and (min-width: 1024px) {
+    .product-container {
+        width: 30px;
+    }
+}
 
-
-
+ */
 
 
 

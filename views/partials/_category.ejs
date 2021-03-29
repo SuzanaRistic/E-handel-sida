@@ -1,8 +1,13 @@
 <link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
 <div class="home-box"><a href="/" class="home-button">Plant Shop</a>
-    <a class="login-button" href="/login">Login </a>
-     <a class="register-button" href="/register">Register </a>
-     <a class="logout-button" href="/logout">Log out</a></div>
+        <%if (token == undefined) {%>        
+                <a class="login-button" href="/login">Login </a>
+                <a class="register-button" href="/register">Register </a>  
+        <%} else { %>
+                <a class="wishlist-button" href="/wishlist"> wishlist </a>
+                <a class="logout-button" href="/logout">Log out</a></div>
+        <%}%>
+  
 <div class="nav-bar">
 <a class="nav-box" href="/plants">Potted plants</a>
 <a class="nav-box" href="/cactuses"> Cactuses</a>
