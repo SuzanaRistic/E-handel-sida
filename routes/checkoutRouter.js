@@ -10,7 +10,7 @@ router.get("/payment" ,shoppingCart, paymentGET)
 
 
 
-router.get("/order/success/:token", shoppingCart, shoppingSuccessGET)
+router.get("/order/success/", shoppingCart, shoppingSuccessGET)
 
 
 router.get('/order/success', shoppingSuccessGET)

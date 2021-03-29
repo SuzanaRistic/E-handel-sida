@@ -1,9 +1,11 @@
 const Cart = require("../models/cartSchema");
 const stripe = require("stripe")("sk_test_51ILqTtBE1mfx14b2FNCEVEBkNVi3bGoj2lHcF1SIk71VB0AbZWvBLVcedSCeO18gpfvuOx7J5MHq1wzG16EvqnZn0030wbwYCJ")
 const {User} = require("../models/userSchema")
+const ejs = require("ejs")
 const crypto = require("crypto");
+require("dotenv").config();
+const nodemailer = require("nodemailer")
 
-const sgMail = require("@sendgrid/mail");
 
 
 
@@ -41,8 +43,7 @@ const paymentGET = async (req, res) => {
 
    let cart = req.shoppingCart.populate("products.productId");
    let user = await User.findOne({email:req.email})
-  console.log(cart.deliveryFee)
-  console.log(cart.userId)
+
 
   const token = await crypto.randomBytes(32).toString("hex");
  
@@ -51,7 +52,8 @@ const paymentGET = async (req, res) => {
   await user.save();
 
 const session=    await stripe.checkout.sessions.create({
-    success_url: 'http://localhost:8000/order/success/' + token,
+    customer_email: user.email,
+    success_url: "http://localhost:8000/order/success?session_id={CHECKOUT_SESSION_ID}",
     cancel_url: 'http://localhost:8000/checkout',
     payment_method_types: ['card'],
     shipping_rates: [cart.deliveryFee],
@@ -72,40 +74,60 @@ const session=    await stripe.checkout.sessions.create({
   
 })
 session.total_details.amount_shipping = cart.deliveryFee;
-
+console.log(session)
 
 res.render("payment.ejs", {sessionId:session.id})
 }; 
 
-const shoppingSuccessGET =  async (req, res) => {
+
+const shoppingSuccessGET =  async ( req, res) => {
+
   let user = await User.findOne({email:req.email})
-  let cart = await Cart.findOne({userId:user.id})
-  console.log(cart)
- try {if (req.params.token != user.token || user == null) return res.redirect("/")
-  user.token = "placeholder"
+  let cart = await Cart.findOne({userId:user.id}).populate("products.productId");
+  let cartTotal = await Cart.findOne({userId:user.id})
+  const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+  const customer = await stripe.customers.retrieve(session.customer);
+ console.log(session.total_details.amount_shipping)
+ let shipping = session.total_details.amount_shipping/100;
+
+/* const x = await stripe.checkout.sessions.listLineItems(
+    req.query.session_id,
+  { },
+  function(err, lineItems) {
+    console.log(lineItems)
+  }
+); */
+/* try {
+    if (req.params.token != user.token || user == null) return res.redirect("/")
+ user.token = "placeholder"
   user = await user.save()
-  console.log(user)
-  const msg = {
+  console.log(user) */
+  
+  const transport = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "dummymailfortransport@gmail.com",
+      pass: process.env.TRANSPORT_PASS,
+    },
+  });
 
+
+const data = await ejs.renderFile(process.cwd()+"/views/shopSuccessEmailCopy.ejs",{items:cart.products,productTotal:cartTotal,user:user, shipping:shipping})
+  await transport.sendMail({
+    from: "dummymailfortransport@gmail.com",
     to: user.email,
-    from: process.env.EMAIL_USER,
-    subject: "Requested new password",
-    html: `<h2> Click <a href="http://localhost:8000/reset/${user.token}" > <b>here</b> </a> to reset password </h2>`,
-  };
-  sgMail
-    .send(msg)
-    .then(() => {
-      console.log("Email sent");
-    })
-    .catch((error) => {
-      console.error(error);
-    });
 
-}
-catch(err){
-    res.redirect("/")
-}
-  res.render("shopSuccess.ejs")
+    html: data
+      
+  });
+  cleanseCart = cartTotal.products = []
+
+  cleanseCart = await cartTotal.save()
+
+
+  res.render("shopSuccess.ejs",{items:cart.products, total:cartTotal,shipping:shipping})
+
+
 
 };
 
