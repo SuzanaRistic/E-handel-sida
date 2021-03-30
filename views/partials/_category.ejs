@@ -1,21 +1,39 @@
-<link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
-        <nav class="header">
-                <div class="empty"></div>
-                <div class="header-box"><a href="/" class="home-button">Plant Shop</a></div>
-                <div class="member-box">
-                        <%if (token == undefined) {%>  
-                        <a class="login-button" href="/login">Login</a>
-                     <a class="register-button" href="/register">Register</a>
-                     <%} else { %>
-                <a class="wishlist-button" href="/wishlist"> wishlist </a>
-                     <a class="logout-button" href="/logout">Logout</a></div>
-                     <%}%>
-                </nav>
+<link
+  href="https://fonts.googleapis.com/css?family=Great Vibes"
+  rel="stylesheet"
+/>
+<nav class="header">
+  <div class="empty"></div>
+  <div class="header-box"><a href="/" class="home-button">Plant Shop</a></div>
+  <div class="member-box">
+    <%if (token == undefined) {%>
+    <a class="login-button" href="/login">Login</a>
+    <a class="register-button" href="/register">Register</a>
+    <%} else { %>
+    <a class="wishlist-button" href="/wishlist"> wishlist </a>
+    <a class="logout-button" href="/logout">Logout</a>
+    <button onclick="cartFunction()">cart</button>
+ 
+  </div>
+  <%}%>
+</nav>
 
 <div class="nav-bar">
-<a class="nav-box" href="/plants">Potted plants</a>
-<a class="nav-box" href="/cactuses"> Cactuses</a>
-<a class="nav-box" href="/tulips"> Tulips</a>
-<a class="nav-box" href="/bouquets"> Bouquets</a>
-<a class="nav-box" href="/vases"> Vases & Pots</a>
+  <a class="nav-box" href="/plants">Potted plants</a>
+  <a class="nav-box" href="/cactuses"> Cactuses</a>
+  <a class="nav-box" href="/tulips"> Tulips</a>
+  <a class="nav-box" href="/bouquets"> Bouquets</a>
+  <a class="nav-box" href="/vases"> Vases & Pots</a>
+
 </div>
+
+<script>
+  function cartFunction() {
+    let x = document.getElementById("shoppingCart");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>
