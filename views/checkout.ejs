@@ -1,66 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Checkout</title>
     <link href="/css/main.css" rel="stylesheet" />
-    <link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
+    <link
+      href="https://fonts.googleapis.com/css?family=Great Vibes"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/7002be5812.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
 
-</head>
-<body>
- <div class="user-handling-bkg">
-    <div class="user-handling-container">
-        <div class="user-handling-banner">
-        <h1> Checkout </h1>
-    </div>
+    <div class="checkout-bkg">
+     
+      <div class="checkout-container">
+        <div class="checkout-banner">
+          <h1>Checkout</h1>
+        </div>
         <p>Please review your order before procceeding to payment</p>
-        <%if(error!=""){%>
-            <%- include("partials/_error.ejs") %>
-        <%}%>
-       <div class="shoppingcart-checkout">
-
-        <% for(let i = 0; i < shoppingCart.products.length; i++){%>
-            <li class="product-box-cart">
-            <img class="product-image-cart" src="/images/<%=shoppingCart.products[i].productId.image.path%>">
+        <%if(error!=""){%> <%- include("partials/_error.ejs") %> <%}%>
+        <div class="shoppingcart-checkout">
+          <% for(let i = 0; i < shoppingCart.products.length; i++){%>
+          <li class="product-box-cart">
+            <img
+              class="product-image-cart"
+              src="/images/<%=shoppingCart.products[i].productId.image.path%>"
+            />
             <div class="cart-text-div">
-            <h3 class="product-title-cart"><%=shoppingCart.products[i].productId.name%></h3>
-            <p class="product-quantity-cart">Qnty <%=shoppingCart.products[i].quantity%> </p>
-            <p class="product-price-cart"><%=shoppingCart.products[i].productId.price%>:-</p>
-            <div class="incrementor-div">
-            <a href="/inc/<%=shoppingCart.products[i]._id%>">+</a>
-            <a href="/dec/<%=shoppingCart.products[i]._id%>">-</a>
+              <h3 class="product-title-cart">
+                <%=shoppingCart.products[i].productId.name%>
+              </h3>
+              <p class="product-quantity-cart">
+                Qnty <%=shoppingCart.products[i].quantity%>
+              </p>
+              <p class="product-price-cart">
+                <%=shoppingCart.products[i].productId.price%>:-
+              </p>
+              <div class="incrementor-div">
+                <a href="/inc/<%=shoppingCart.products[i]._id%>">+</a>
+                <a href="/dec/<%=shoppingCart.products[i]._id%>">-</a>
+              </div>
+            </div>
+            <div class="cart-delete-div">
+              <a
+                href="/delete/<%=shoppingCart.products[i]._id%>"
+                class="fas fa-times"
+              ></a>
+            </div>
+          </li>
+          <%}%>
+          <p id="checkout-total">Total:<%=shoppingCart.total%>:-</p>
         </div>
-        </div>
- <div class="cart-delete-div">
-    <a href="/delete/<%=shoppingCart.products[i]._id%>">delete</a>
-</div>
-</li>
-        <%}%>
-        <p><%=shoppingCart.total%></p>
-
-       </div>
-
-
+        <div class="checkout-text-div">
         <span>Forgot something?</span><a href="/">Keep shopping!</a>
-    
+    </div>
+    <div id="checkout-delivery-options">
+        <h2>Delivery options</h2>
+        <form action="/checkout" method="POST">
+            <label>
+          <input
+            type="radio"
+            value="shr_1IYub7BE1mfx14b2yBIZoV46"
+            name="deliveryOption"
+          />
+         DHL ombud <strong> 79kr </strong>
+        </label>
+        <label>
+          <input
+            type="radio"
+            value="shr_1IYuaeBE1mfx14b2rf2SUV6K"
+            name="deliveryOption"
+          />
+          Budbee hemleverans <strong> 129kr </strong>
+        </label>
+        <label>
+          <input
+            type="radio"
+            value="shr_1IYuZgBE1mfx14b2eFBbUzzV"
+            name="deliveryOption"
+          />
+         DHL hemleverans <strong> 149kr </strong>
+        </label>
+          <button>Proceed to payment</button>
+        </form>
+        
+    </div>
+      </div>
+      <div id="footer"></div>
+    </div>
 
-
-    
-
-    <h2> Delivery options </h2>
-       <form action="/checkout" method="POST">
-  
-        <input type="radio" value="shr_1IYub7BE1mfx14b2yBIZoV46" name="deliveryOption"><p> DHL ombud <strong> 79kr </strong></p>
-        <input type="radio" value="shr_1IYuaeBE1mfx14b2rf2SUV6K" name="deliveryOption"><p> Budbee hemleverans <strong> 129kr </strong></p>
-        <input type="radio" value="shr_1IYuZgBE1mfx14b2eFBbUzzV" name="deliveryOption"><p> DHL hemleverans <strong> 149kr </strong></p>
-        <button> Proceed to payment </button>
-    </form>
-
-
-</div>
-      
-  
-</body>
+  </body>
 </html>
