@@ -58,8 +58,6 @@ const addToCartFromList = async (req, res) => {
         let user = await User.findOne({ _id: userId });
         let cart = await Cart.findOne({ userId: userId });
 
-        const wishlist = user.wishlist;
-
         if (!cart) {
             let cart = await new Cart({ userId: userId }).save();
             cart.products.push({ productId: productId, quantity: 1 });
@@ -76,6 +74,8 @@ const addToCartFromList = async (req, res) => {
         quantity += 1;
         cart.products[index].quantity = quantity;
         cart = await cart.save();
+
+        const wishlist = user.wishlist;
 
         let indexWish = wishlist.findIndex((x) => x._id == productId);
         wishlist.splice([indexWish], 1);
