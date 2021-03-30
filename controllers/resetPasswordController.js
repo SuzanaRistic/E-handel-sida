@@ -50,9 +50,9 @@ const resetParams = async (req, res) => {
 
     if (!user) return res.redirect("/register");
 
-    res.render("resetPasswordForm.ejs", { err: "", email: user.email });
-  } catch (err) {
-    res.render("reset.ejs", { err: " Försök igen" });
+    res.render("resetPasswordForm.ejs", { error: "", email: user.email });
+  } catch (error) {
+    res.render("reset.ejs", { error: " Försök igen" });
   }
 };
 const resetFormSubmit = async (req, res) => {

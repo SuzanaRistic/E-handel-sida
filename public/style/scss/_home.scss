@@ -18,6 +18,10 @@
     height: 50px;
 }
 
+.nav-bar {
+    display: none;
+}
+
 .empty {
     width: 20%;
 }
@@ -28,8 +32,8 @@
     background-image: url('../img/Bakgrund/background-image.jpeg');
     background-size: cover;
     opacity: 0.7;
-    letter-spacing: 5px;
-    word-spacing: 10px;
+    letter-spacing: 0;
+    word-spacing: 0;
     text-align: center;
     width: 60%;
 }
