@@ -1,5 +1,6 @@
 const homeGET = (req, res) => {
-    res.render("index.ejs", { error: "" })
+    let token = req.cookies.jwToken;
+    res.render("index.ejs", { error: "", token})
 }
 
 module.exports = homeGET;

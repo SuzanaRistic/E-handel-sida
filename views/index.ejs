@@ -10,13 +10,7 @@
     <script type="text/javscript" src="../clientside.js"></script>
 </head>
 <body>
-    <nav class="header">
-    <div class="empty"></div>
-    <div class="header-box"><a href="/" class="home-button">Plant Shop</a></div>
-    <div class="member-box"><a class="login-button" href="/login">Login</a>
-         <a class="register-button" href="/register">Register</a>
-         <a class="logout-button" href="/logout">Logout</a></div>
-    </nav>
+    <%- include("partials/_category.ejs") %>
  <nav class="body-page">
      <div class="category-box plant-box"><div class="category-button-box"><a href="/plants" class="category-button">Potted plants</a></div></div>
      <div class="category-box cactuses-box"><div class="category-button-box"><a href="/cactuses" class="category-button"> Cactuses</a></div></div>
