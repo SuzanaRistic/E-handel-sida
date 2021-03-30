@@ -2,11 +2,9 @@
 @import './navbar';
 @import './mixins';
 
-header {
+
     @include nav-bar-mixin;
-    @include banner;
-    width: 100%;
-}
+
 .specific-page-container {
     background-image: url("../img/Bakgrund/background-image.jpeg");
     display: flex;

@@ -1,6 +1,6 @@
 
 #shoppingCart  {
-
+   
     background-color: white;
     position: absolute;
     z-index: 5;
@@ -12,7 +12,7 @@
    
     border-radius: 1px;
     margin-bottom: 5px;
-    //border: 1px solid black;
+    border: 1px solid black;
   
 
     .product-box-cart {
@@ -69,11 +69,14 @@
         }
       }
     }
-    #checkout-total{
-      background-color: white;
-      padding: 10px;
-      border-radius: 1px;
-      box-shadow: 0px 0px 0px 8px rgba(0,0,0,0.1); 
-    
+    #shoppingCart-small-total{
+        background-color: white;
+        text-align: center;
+        a{ 
+            text-decoration: none;
+            color: black;
+            font-size: 1.2rem;
+        }
     }
+    
   }
