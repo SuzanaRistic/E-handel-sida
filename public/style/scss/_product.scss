@@ -16,7 +16,6 @@
 
     header {
         @include nav-bar-mixin;
-        @include banner;
         width: 100%;
     }
 
