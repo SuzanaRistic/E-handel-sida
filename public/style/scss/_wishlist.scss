@@ -1,0 +1,52 @@
+.wishlist-wrapper {
+    background-image: url('../img/Bakgrund/background-image.jpeg');
+    background-size: cover;
+    min-height: 101vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        width: 100%;
+        margin-top: 0;
+        text-align: center;
+        padding: 2vh;
+    }
+
+    .wishlist-item {
+        display: flex;
+        width: 70%;
+        height: 200px; 
+        margin-bottom: 10px;
+
+        .image-container {
+            position: relative;
+            width: 50%;
+            overflow: hidden;
+            margin-right: 10px;
+            
+                    img {
+                        position: absolute;
+                        top:      0;
+                        left:     0;
+                        bottom:   0;
+                        right:    0;
+        
+                        object-fit: cover;
+                        width: 100%;
+                        min-height: 100%;
+                    }
+                }
+                .image-container:before {
+                    content:     "";
+                    display:     block;
+                    padding-top: 120%;
+                }
+
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+
+    }
+}
