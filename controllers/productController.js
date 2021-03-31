@@ -29,7 +29,7 @@ async function pagination(req, res, category) {
     const dataToShow = page * dataPerPage;
     const plants = await Product.find({ category: category })
       .limit(dataToShow)
-      .sort({ name: sorted });
+      .sort({ price: sorted });
     const totalData = await Product.find({
       category: category,
     }).countDocuments();

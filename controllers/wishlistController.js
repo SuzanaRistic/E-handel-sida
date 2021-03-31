@@ -8,7 +8,7 @@ const wishlistGET = async (req, res) => {
   const token = req.cookies.jwToken;
 
   await user.populate("wishlist").execPopulate();
-
+  if (user.wishlist.length == 0) return res.redirect("/")
   res.render("wishlist.ejs", {
     wishlist: user.wishlist,
     token,
