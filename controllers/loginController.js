@@ -26,7 +26,7 @@ const loginPOST = async (req, res) => {
       if (!cookie) {
         res.cookie("jwToken", jwToken, { maxAge: 604800000, httpOnly: true });
       }
-      console.log(user);
+
       return res.redirect("/");
     }
   } catch (error) {

@@ -21,7 +21,7 @@ const shoppingCart = async (req, res, next) => {
     req.shoppingCart = cart;
     req.email = decoded.user.email;
     req.userFull = decoded;
-    console.log(decoded)
+ 
     if (cart.products.length === 0) {
       cart.total = 0;
     }
