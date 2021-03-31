@@ -80,6 +80,7 @@ const addToCartFromList = async (req, res) => {
         const wishlist = user.wishlist;
 
         let indexWish = wishlist.findIndex((x) => x._id == productId);
+        console.log(indexWish+ "laskdnasldnsl")
         wishlist.splice([indexWish], 1);
         user = await user.save();
         return res.redirect(req.headers.referer);
