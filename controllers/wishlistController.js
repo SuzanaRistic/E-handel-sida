@@ -11,7 +11,8 @@ const wishlistGET = async (req, res) => {
 
     res.render('wishlist.ejs', {
         wishlist: user.wishlist,
-        token
+        token,
+        shoppingCart: req.shoppingCart
     })
 }
 

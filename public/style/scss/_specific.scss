@@ -10,6 +10,7 @@
     flex-direction: column;
     align-items: center;
     width: 100vw;
+    min-height: 100vh;
 
     .specific-product-container {
         align-self: center;
@@ -64,7 +65,7 @@
 }
 
 
- @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .specific-product-container {
         display: flex;
         flex-direction: row;
@@ -73,7 +74,9 @@
 }
 
 @media screen and (min-width: 1024px) {
-    .specific-product-container {
-        max-width: 70%;
+    .specific-page-container {
+        .specific-product-container {
+            max-width: 70%;
+        }
     }
 } 

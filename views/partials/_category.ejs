@@ -13,7 +13,9 @@
     <a class="wishlist-button" href="/wishlist"> wishlist </a>
     <a class="logout-button" href="/logout">Logout</a>
     <button onclick="cartFunction()">cart</button>
- 
+    <%if (shoppingCart){%>
+        <%- include("_shoppingCart.ejs") %> 
+      <%}%>
   </div>
   <%}%>
 </nav>
