@@ -8,9 +8,9 @@
     <link href="/css/main.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="wishlist-wrapper">
+    <%- include("partials/_category.ejs") %>
 
-        <%- include("partials/_category.ejs") %>
+    <div class="wishlist-wrapper">
         <h1> WISHLIST </h1>
     
     <% for(let i = 0; i < wishlist.length; i++){%>
