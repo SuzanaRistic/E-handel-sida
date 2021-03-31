@@ -21,12 +21,6 @@ const addToWishlist = async (req, res) => {
 
     try {
         let user = await User.findOne({ _id: userId });
-        const wishlist = user.wishlist;
-
-        console.log(wishlist)
-        const existingProduct = await wishlist.findById({ _id: productId });
-        console.log(existingProduct + " produkten finns redan")
-
         user.wishlist.push(productId);
         user.save()
 

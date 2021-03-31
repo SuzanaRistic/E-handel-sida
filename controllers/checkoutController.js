@@ -11,6 +11,8 @@ const nodemailer = require("nodemailer")
 
 
 const checkoutGET = async (req, res) => {
+if (req.shoppingCart.products.length == 0) return res.redirect("/")
+
   res.render("checkout.ejs", { error: "", shoppingCart: req.shoppingCart });
 };
 

@@ -29,6 +29,7 @@ const shoppingCart = async (req, res, next) => {
     cart = await cart.save();
   } catch (err) {
     console.log(err);
+   
   }
 
   next();
