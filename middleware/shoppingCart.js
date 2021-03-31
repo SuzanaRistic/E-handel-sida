@@ -9,13 +9,13 @@ const shoppingCart = async (req, res, next) => {
     const token = req.cookies.jwToken;
 
     const decoded = jwt.verify(token, process.env.TOKEN_KEY);
-  
+
     const user = await User.findOne({ email: decoded.user.email });
-  
+
     let cart = await Cart.findOne({ userId: user._id }).populate(
       "products.productId"
     );
- 
+
     genTotal(cart);
 
     req.shoppingCart = cart;
@@ -29,7 +29,6 @@ const shoppingCart = async (req, res, next) => {
     cart = await cart.save();
   } catch (err) {
     console.log(err);
-   
   }
 
   next();
