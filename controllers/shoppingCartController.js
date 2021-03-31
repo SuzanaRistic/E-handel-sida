@@ -51,10 +51,10 @@ const incrementProduct = async (req, res) => {
 const decrementProduct = async (req, res) => {
 
   let cart = await Cart.findOne({ userId: req.userFull.user._id });
-  console.log(cart);
+ 
   let productId = req.params.id;
   let index = cart.products.findIndex((x) => x._id == productId);
-  console.log(index);
+
   let quantity = cart.products[index].quantity;
   quantity -= 1;
   cart.products[index].quantity = quantity;

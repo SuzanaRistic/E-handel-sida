@@ -34,7 +34,7 @@ async function pagination(req, res, category) {
       category: category,
     }).countDocuments();
 
-    console.log(req.shoppingCart)
+
     let token = req.cookies.jwToken;
 
     res.render("product.ejs", {

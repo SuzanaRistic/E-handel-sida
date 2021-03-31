@@ -67,7 +67,7 @@ const paymentGET = async (req, res) => {
     mode: "payment",
   });
   session.total_details.amount_shipping = cart.deliveryFee;
-  console.log(session);
+
 
   res.render("payment.ejs", { sessionId: session.id });
 };
@@ -80,7 +80,7 @@ const shoppingSuccessGET = async (req, res) => {
   let cartTotal = await Cart.findOne({ userId: user.id });
   const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
   const customer = await stripe.customers.retrieve(session.customer);
-  console.log(session.total_details.amount_shipping);
+
   let shipping = session.total_details.amount_shipping / 100;
 
   const transport = nodemailer.createTransport({
