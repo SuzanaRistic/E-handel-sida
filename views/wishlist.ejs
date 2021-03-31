@@ -23,8 +23,8 @@
                 <p id="name-p"><strong><%=wishlist[i].name%></strong></p>
                 <p id="price-p"><%=wishlist[i].price%> SEK</p>
 
-                <a id="add-to-cart" href="/addToCartFromList/<%=wishlist[i]._id%>"> Add to cart </a>
-                <a href="/deleteWishlist/<%=wishlist[i]._id%>"> Delete </a>
+                <a class="add-button" id="add-to-cart" href="/addToCartFromList/<%=wishlist[i]._id%>"> Add to cart </a><br>
+                <a class="delete-button" href="/deleteWishlist/<%=wishlist[i]._id%>"> Delete </a>
             </div>
         </div>
     <%}%> 

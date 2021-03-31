@@ -50,6 +50,26 @@
         div {
             display: flex;
             flex-direction: column;
+
+            .add-button {
+                text-decoration: none;
+                color: white;
+                letter-spacing: 2px;
+                box-shadow: 2px 2px 2px  rgb(136, 136, 136);
+                background-color: rgb(179, 179, 179);
+                text-align:center;
+                padding: 5px;
+            }
+            .delete-button {
+                text-decoration: none;
+                color: white;
+                letter-spacing: 2px;
+                box-shadow: 2px 2px 2px  rgb(136, 136, 136);
+                background-color: rgb(179, 179, 179);
+                text-align:center;
+                padding:5px;
+                margin-bottom: 15px;
+            }
         }
 
     }
