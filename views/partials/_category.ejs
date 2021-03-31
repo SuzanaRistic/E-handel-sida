@@ -2,6 +2,10 @@
   href="https://fonts.googleapis.com/css?family=Great Vibes"
   rel="stylesheet"
 />
+<script
+src="https://kit.fontawesome.com/7002be5812.js"
+crossorigin="anonymous"
+></script>
 <nav class="header">
   <div class="empty"></div>
   <div class="header-box"><a href="/" class="home-button">Plant Shop</a></div>
@@ -12,10 +16,13 @@
     <%} else { %>
     <a class="wishlist-button" href="/wishlist"> wishlist </a>
     <a class="logout-button" href="/logout">Logout</a>
-    <button onclick="cartFunction()">cart</button>
+ 
+    <button id="cart-button" onclick="cartFunction()" class="fas fa-shopping-cart"></button>
     <%if (shoppingCart){%>
-        <%- include("_shoppingCart.ejs") %> 
-      <%}%>
+
+      <%- include("_shoppingCart.ejs") %> 
+    <%}%>
+
   </div>
   <%}%>
 </nav>
