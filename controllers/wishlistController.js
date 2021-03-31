@@ -13,6 +13,7 @@ const wishlistGET = async (req, res) => {
         wishlist: user.wishlist,
         token,
         shoppingCart: req.shoppingCart
+
     })
 }
 
