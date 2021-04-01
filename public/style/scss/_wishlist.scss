@@ -2,6 +2,7 @@
     background-image: url('../img/Bakgrund/background-image.jpeg');
     background-size: cover;
     min-height: 101vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,14 +17,17 @@
     .wishlist-item {
         display: flex;
         width: 70%;
-        height: 200px; 
+        max-height: 200px; 
         margin-bottom: 10px;
+        align-items: center;
+        background-color: rgba(128, 128, 128, 0.088);
 
         .image-container {
             position: relative;
             width: 50%;
+            max-width: 150px;
             overflow: hidden;
-            margin-right: 10px;
+            margin-right: 30px;
             
                     img {
                         position: absolute;
@@ -46,7 +50,44 @@
         div {
             display: flex;
             flex-direction: column;
+
+            .add-button {
+                text-decoration: none;
+                color: white;
+                letter-spacing: 2px;
+                box-shadow: 2px 2px 2px  rgb(136, 136, 136);
+                background-color: rgb(179, 179, 179);
+                text-align:center;
+                padding: 5px;
+            }
+            .delete-button {
+                text-decoration: none;
+                color: white;
+                letter-spacing: 2px;
+                box-shadow: 2px 2px 2px  rgb(136, 136, 136);
+                background-color: rgb(179, 179, 179);
+                text-align:center;
+                padding:5px;
+                margin-bottom: 15px;
+            }
         }
 
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    .wishlist-wrapper {
+        .wishlist-item {
+            width: 50%;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .wishlist-wrapper {
+        .wishlist-item {
+            width: 40%;
+        }
     }
 }

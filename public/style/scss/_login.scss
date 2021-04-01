@@ -5,19 +5,16 @@
       rgba(255, 255, 255, 0.8),
       rgba(255, 255, 255, 0.8)
     ),
-  url("../img/Bakgrund/jungle-plants.jpg");
+    url("../img/Bakgrund/jungle-plants.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
-  width: 100%;
 
-  .user-handling-container{
+  .user-handling-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     height: 100%;
-
     .user-handling-banner {
       background-image: url("../img/Bakgrund/background-image.jpeg");
       width: 100%;
@@ -33,30 +30,28 @@
       width: auto;
 
       height: 7%;
-
     }
     form {
       display: flex;
       flex-direction: column;
       //border: 1px solid black;
       background-color: white;
- 
-      input,button{
-          margin: 1px;
-          border: 0;
-          font-size: 1rem;
-          background-color: rgb(236, 229, 229)
-         
+
+      input,
+      button {
+        margin: 1px;
+        border: 0;
+        font-size: 1rem;
+        background-color: rgb(236, 229, 229);
       }
 
-      button{
+      button {
         height: 25px;
-        background-color:$light-green-buttons;
-        
-    }
-      input:focus{
-          outline: none;
-          color: none;
+        background-color: $light-green-buttons;
+      }
+      input:focus {
+        outline: none;
+        color: none;
       }
     }
   }

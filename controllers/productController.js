@@ -29,12 +29,12 @@ async function pagination(req, res, category) {
     const dataToShow = page * dataPerPage;
     const plants = await Product.find({ category: category })
       .limit(dataToShow)
-      .sort({ name: sorted });
+      .sort({ price: sorted });
     const totalData = await Product.find({
       category: category,
     }).countDocuments();
 
-    console.log(req.shoppingCart)
+
     let token = req.cookies.jwToken;
 
     res.render("product.ejs", {
