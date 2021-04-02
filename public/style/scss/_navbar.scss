@@ -1,7 +1,20 @@
 @import './variables';
 
+@mixin mobile-nav-bar {
+
+    .nav-box{
+        margin: 5px;
+        text-decoration: $clean;
+        color: whitesmoke;
+        font-family: Optima, sans-serif;
+        font-size: 12px;
+    }  
+
+}
+
 @mixin nav-bar-mixin {
     .nav-bar {
+    display: flex;
     background-color: black;
     height: 30px;
     display: flex;
@@ -18,5 +31,5 @@
     color: whitesmoke;
     font-family: Optima, sans-serif;
     font-size: 20px;
-}   
+}  
 }

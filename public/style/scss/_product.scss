@@ -12,7 +12,7 @@
     overflow: hidden;
     width: 100%;
 
-    @include nav-bar-mixin;
+    @include mobile-nav-bar;
 
     .sort-container {
         display: flex;
