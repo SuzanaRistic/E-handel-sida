@@ -3,7 +3,8 @@ const homeGET = (req, res) => {
     res.render("index.ejs", {
         error: "",
         token,
-        shoppingCart: req.shoppingCart
+        shoppingCart: req.shoppingCart,
+        user:req.userFull
     })
 }
 

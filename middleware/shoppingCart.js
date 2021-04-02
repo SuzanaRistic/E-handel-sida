@@ -15,9 +15,15 @@ const shoppingCart = async (req, res, next) => {
     let cart = await Cart.findOne({ userId: user._id }).populate(
       "products.productId"
     );
-
+    console.log(cart.products)
+    let index = cart.products.findIndex((x) => x.productId == null);
+    if (index != -1 ){
+      cart.products.splice([index], 1)
+      cart = await cart.save()
+    }
+    console.log(index)
     genTotal(cart);
-
+    
     req.shoppingCart = cart;
     req.email = decoded.user.email;
     req.userFull = decoded;
@@ -25,7 +31,7 @@ const shoppingCart = async (req, res, next) => {
     if (cart.products.length === 0) {
       cart.total = 0;
     }
-
+   
     cart = await cart.save();
   } catch (err) {
     console.log(err);

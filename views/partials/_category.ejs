@@ -9,12 +9,17 @@ crossorigin="anonymous"
 <nav class="header">
   <div class="header-box"><a href="/" class="home-button">The Bloom Room</a></div>
   <div class="member-box">
+    <%if (user != undefined){%>
+      <%if (user.user.role == 'Admin'){%>
+        <a id="admin-link" href="/admin">Admin</a>
+     <% }%>
+   <% }%>
     <%if (token == undefined) {%>
     <a class="login-button" href="/login">Login</a>
     <a class="register-button" href="/register">Register</a>
     <%} else { %>
     <a class="logout-button" href="/logout">Logout</a>
-
+    
     <a class="wishlist-button" href="/wishlist"><i class="far fa-heart" style="font-size:15px;"></i></a>
     <button id="cart-button" onclick="cartFunction()" class="fas fa-shopping-cart"></button>
     <%if (shoppingCart){%>

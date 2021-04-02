@@ -1,0 +1,51 @@
+#admin-link{
+    text-decoration: none;
+    color: black;
+}
+
+#admin-mode-div{
+   a {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        margin-top: 5px;
+        width: 150px;
+        text-decoration: none;
+        color: white;
+        letter-spacing: 2px;
+        box-shadow: 2px 2px 2px  rgb(136, 136, 136);
+        background-color: rgb(179, 179, 179);
+        transition: 0.2s ease-in;
+
+        &:hover {
+            color: rgb(104, 104, 104);
+            background-color: rgb(196, 196, 196);
+        }
+        &:active {
+            background-color: rgb(83, 83, 83);
+            box-shadow: 1px 1px 1px  rgb(68, 68, 68);
+        }  
+    }
+}
+
+#admin-edit-form{
+    display:flex;
+    flex-direction: column;
+    margin: 5px;
+    input{
+        margin-bottom: 10px;
+    }
+    button{
+
+            margin: 1px;
+            border: 0;
+            font-size: 1rem;
+            background-color: rgb(236, 229, 229);
+   
+    
+       
+            height: 25px;
+            background-color: $light-green-buttons;
+          
+    }
+}
