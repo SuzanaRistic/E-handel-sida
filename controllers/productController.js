@@ -45,7 +45,8 @@ async function pagination(req, res, category) {
       totalData: totalData,
       page: page,
       shoppingCart: req.shoppingCart,
-      token
+      token,
+      user:req.userFull
     });
   } catch (error) {
     res.render("product.ejs", { error: error });
@@ -54,6 +55,7 @@ async function pagination(req, res, category) {
 
 const specificGET = async (req, res) => {
   const token = req.cookies.jwToken;
+  
 
   try {
     const product = await Product.findOne({ _id: req.params.id });
@@ -62,7 +64,10 @@ const specificGET = async (req, res) => {
       error: "",
       product: product,
       shoppingCart: req.shoppingCart,
-      token
+      token,
+      user:req.userFull,
+      editMode:false,
+  
     });
   } catch (error) {
     res.render("product.ejs", { error: "Product not found", token });

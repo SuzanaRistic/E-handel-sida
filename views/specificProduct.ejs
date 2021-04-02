@@ -18,6 +18,27 @@
         <%}%>
 
         <div class="specific-product-container">
+            <%if(editMode == true){%>
+                <img id="specificImage" src="/images/<%=product.image.path%>">
+    
+                <div class="product-information">
+                    <form method="POST" action="/adminEdit/<%=product.id%>" enctype="multipart/form-data">
+                    <label for="name">Product name</label>
+                    <input name="name" value="<%=product.name%>">      
+                    <label for="price">Product price</label>
+                    <input name="price" value="<%=product.price%>">
+                    <label for="desc">Product description</label>
+                    <input name="desc" value="<%=product.description%>">
+                    <label for="image">Product image</label>
+                    <input type="file" id="image" name="image">    
+                    <button type="submit">Save changes</button>
+                    </form>
+               
+
+
+
+            <%}else{%>
+            
         <img id="specificImage" src="/images/<%=product.image.path%>">
     
             <div class="product-information">
@@ -26,10 +47,20 @@
                 <span><%=product.description%></span>
                 <a class="add-to-button" id="add-to-cart" href="/addToCart/<%=product._id%>"">Add to cart</a>
                 <a class="add-to-button" id="add-to-wishlist" href="/addToWishlist/<%=product._id%>"">Add to Wishlist</a>
+                <%if (user != undefined){%>    
+      <%if (user.user.role == 'Admin'){%>
+        <div id="admin-mode-div">
+            <a  href="/adminEdit/<%=product._id%>">Edit product</a>
+        <a  href="/adminDelete/<%=product._id%>">Delete product</a>
+    </div>
+ 
+    
+     <% }%>
+     <%}%>
             </div>
         </div>
     </div>
+    <%}%>
 </body>
 
 </html>
-
