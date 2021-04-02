@@ -42,7 +42,7 @@ router.post("/admin", upload.single("image"), async (req, res) => {
 
 })
 
-router.get("/adminDelete/:id", adminDELETEGET)
+router.get("/adminDelete/:id",shoppingCart, adminDELETEGET)
 
 router.get("/adminEdit/:id",shoppingCart, verifyUser,adminEDITGET)
 

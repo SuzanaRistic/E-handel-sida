@@ -22,7 +22,7 @@
                 <img id="specificImage" src="/images/<%=product.image.path%>">
     
                 <div class="product-information">
-                    <form method="POST" action="/adminEdit/<%=product.id%>" enctype="multipart/form-data">
+                    <form id="admin-edit-form" method="POST" action="/adminEdit/<%=product.id%>" enctype="multipart/form-data">
                     <label for="name">Product name</label>
                     <input name="name" value="<%=product.name%>">      
                     <label for="price">Product price</label>
