@@ -1,0 +1,84 @@
+@import './variables';
+@import './navbar';
+@import './mixins';
+
+@include nav-bar-mixin;
+@include mobile-nav-bar;
+
+
+.specific-page-container {
+    background-image: url("../img/Bakgrund/background-image.jpeg");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    min-height: 100vh;
+
+    .specific-product-container {
+        align-self: center;
+        padding: 2vh;
+
+        #specificImage {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .product-information {
+            background-color: rgba(255, 255, 255, 0.313);
+            width: 100%;
+            max-width: 500px;
+            padding-left: 20px;
+            flex-wrap: wrap;
+
+            #price {
+                color: gray;
+            }
+
+            .add-to-button {
+                display: flex;
+                justify-content: center;
+                padding: 10px;
+                margin-top: 50px;
+                width: 150px;
+                text-decoration: none;
+                color: white;
+                letter-spacing: 2px;
+                box-shadow: 2px 2px 2px  rgb(136, 136, 136);
+                background-color: rgb(179, 179, 179);
+                transition: 0.2s ease-in;
+
+                &:hover {
+                    color: rgb(104, 104, 104);
+                    background-color: rgb(196, 196, 196);
+                }
+                &:active {
+                    background-color: rgb(83, 83, 83);
+                    box-shadow: 1px 1px 1px  rgb(68, 68, 68);
+                }  
+            }
+
+            #add-to-wishlist {
+                padding: 5px;
+                margin-top: 10px;
+                letter-spacing: 1px;
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .specific-product-container {
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .specific-page-container {
+        .specific-product-container {
+            max-width: 70%;
+        }
+    }
+} 

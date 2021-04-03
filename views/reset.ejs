@@ -1,8 +1,33 @@
-<%if(error!=""){%>
-    <%- include("partials/_error.ejs") %>
-<%}%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset</title>
+    <link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
+    <link href="/css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="user-handling-bkg">
+        <div class="user-handling-container">
+            <header class="user-handling-banner">
+                <h1>The Bloom Room</h1>
+            </header>
+            <div class="user-handling-error-box">
+            
+                      
+                <%if(error!=""){%>
+                    <%- include("partials/_error.ejs") %>
+                <%}%>
+            </div>
+            <form action="/reset" method="post">
+                <input type="email" name="email" id="" placeholder="E-mail">
+                <button type="submit">Send link</button>    
+            </form>
+        </div>
+    </div>
+</body>
+</html>
 
-<form action="/reset" method="post">
-    <input type="email" name="email" id="" placeholder="E-mail">
-    <button type="submit">Send link</button>    
-</form>
+

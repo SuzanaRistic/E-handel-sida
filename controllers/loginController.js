@@ -11,6 +11,7 @@ const loginPOST = async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    res.clearCookie("jwToken")
     const user = await User.findOne({ email: email });
     if (!user) return res.render("login.ejs", { error: "Email not found" });
     const validUser = await bcrypt.compare(password, user.password);
@@ -25,7 +26,7 @@ const loginPOST = async (req, res) => {
       if (!cookie) {
         res.cookie("jwToken", jwToken, { maxAge: 604800000, httpOnly: true });
       }
-      console.log(user);
+
       return res.redirect("/");
     }
   } catch (error) {

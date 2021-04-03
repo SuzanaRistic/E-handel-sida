@@ -1,0 +1,142 @@
+@import "./imports";
+
+.checkout-bkg {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url("../img/Bakgrund/jungle-plants.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+
+  .checkout-container {
+    z-index: 1;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .checkout-banner{
+      background-image: url("../img/Bakgrund/background-image.jpeg");
+      width: 100%;
+        text-align: center;
+        margin: 40px 0 10px 0;
+        h1 {
+          font-family: Great Vibes;
+          font-size: 4rem;
+          margin: 20px 0 10px 0;
+        }
+    }
+    .shoppingcart-checkout {
+      //background-color: rgb(211, 210, 210);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      //background-color: white;
+      padding: 0 15px 0 15px;
+      border-radius: 1px;
+      margin-bottom: 5px;
+      //border: 1px solid black;
+    
+
+      .product-box-cart {
+        background-color: white;
+        display: flex;
+        align-items: center;
+        margin: 10px;
+        width: 100%;
+        padding: 5px;
+        border-radius: 1px;
+        box-shadow: 0px 0px 0px 8px rgba(0,0,0,0.1);   
+         
+        .product-image-cart {
+          height: 125px;
+          width: 125px;
+          object-fit: cover;
+        }
+        .cart-text-div {
+          //background-color: cyan;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content:flex-start;
+          height: 125px;
+          flex-grow: 1;
+          .product-title-cart {
+            margin: 0 0 25px 0;
+          }
+         
+          .product-quantity-cart {
+            margin: 0;
+          
+          }
+          .product-price-cart {
+            margin: 0;
+          }
+          .incrementor-div {
+            display: flex;
+            align-items: center;
+
+            a {
+              text-decoration: none;
+              margin: 5px;
+              font-size: 1.4rem;
+              color: black;
+            }
+          }
+        }
+        .cart-delete-div {
+          align-self: flex-start;
+          a{
+            text-decoration: none;
+            color: $light-green-buttons;
+          }
+        }
+      }
+      #checkout-total{
+        background-color: white;
+        padding: 10px;
+        border-radius: 1px;
+        box-shadow: 0px 0px 0px 8px rgba(0,0,0,0.1); 
+      
+      }
+    }
+    .checkout-text-div{
+      background-color: white;
+      padding: 10px;
+      border-radius: 1px;
+      box-shadow: 0px 0px 0px 8px rgba(0,0,0,0.1);  
+      margin-bottom: 25px;
+    }
+    #checkout-delivery-options{
+      text-align: center;
+      background-color: white;
+      padding: 5px 15px 5px 15px;
+      border-radius: 1px;
+      box-shadow: 0px 0px 0px 8px rgba(0,0,0,0.1);
+      //margin-bottom: 25px;
+      form{
+        text-align: start;
+        margin-bottom: 25px;
+        display: flex;
+        flex-direction: column;
+        label{
+          margin: 5px;
+        }
+        button{
+          margin: 10px;
+          border: 0;
+          font-size: 1.2rem;
+          padding: 5px;
+          border-radius: 1px;
+          background-color:$light-green-buttons;
+        }
+      }
+    }
+  }
+  #footer{
+    height: 150px;
+    width: 100%;
+    
+  }
+}

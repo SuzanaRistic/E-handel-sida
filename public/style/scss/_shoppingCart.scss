@@ -1,0 +1,110 @@
+@import "./imports";
+#cart-button{
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+
+}
+
+#shoppingCart  {
+   
+    background-color: white;
+    position: absolute;
+    z-index: 5;
+    right: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation-name:  fade-in-animation;
+
+    animation-duration: .3s;
+    //background-color: white;
+    
+    border-radius: 1px;
+    margin-bottom: 5px;
+    border: 1px solid black;
+  
+
+    .product-box-cart {
+      background-color: white;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      width: 100%;
+     // padding: 5px;
+      border-bottom: 1px solid rgb(151, 149, 149);
+       
+      .product-image-cart {
+        height: 75px;
+        width: 75px;
+        object-fit: cover;
+      }
+      .cart-text-div {
+    
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content:flex-start;
+        height: 75px;
+        flex-grow: 1;
+   
+        .product-title-cart {
+         margin: 0;
+         font-size: .9rem;
+        }
+       
+        .product-quantity-cart {
+          margin: 0;
+        
+        }
+        .product-price-cart {
+          margin: 0;
+        }
+        .incrementor-div {
+          display: flex;
+          align-items: center;
+
+          a {
+            text-decoration: none;
+        
+            font-size: 1.4rem;
+            color: black;
+          }
+        }
+      }
+      .cart-delete-div {
+        align-self: flex-start;
+        a{
+          margin-left: 10px;
+          text-decoration: none;
+          color: $light-green-buttons;
+        }
+      }
+    }
+    #shoppingCart-small-total{
+        background-color: white;
+        padding-bottom: 15px;
+        text-align: center;
+        width: 215px;
+   
+        #checkout-total{
+          margin: 5px;
+        }
+        a{ 
+          text-decoration: none;
+          color: black;
+          letter-spacing: 2px;
+          box-shadow: 2px 2px 2px  rgb(165, 164, 164);
+          background-color: rgb(208, 208, 208);
+          text-align:center;
+          padding: 4px;
+        }
+        p{
+          
+          text-align: center;
+
+        }
+    }
+    
+  }

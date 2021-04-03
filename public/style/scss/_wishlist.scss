@@ -1,0 +1,93 @@
+.wishlist-wrapper {
+    background-image: url('../img/Bakgrund/background-image.jpeg');
+    background-size: cover;
+    min-height: 101vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        width: 100%;
+        margin-top: 0;
+        text-align: center;
+        padding: 2vh;
+    }
+
+    .wishlist-item {
+        display: flex;
+        width: 70%;
+        max-height: 200px; 
+        margin-bottom: 10px;
+        align-items: center;
+        background-color: rgba(128, 128, 128, 0.088);
+
+        .image-container {
+            position: relative;
+            width: 50%;
+            max-width: 150px;
+            overflow: hidden;
+            margin-right: 30px;
+            
+                    img {
+                        position: absolute;
+                        top:      0;
+                        left:     0;
+                        bottom:   0;
+                        right:    0;
+        
+                        object-fit: cover;
+                        width: 100%;
+                        min-height: 100%;
+                    }
+                }
+                .image-container:before {
+                    content:     "";
+                    display:     block;
+                    padding-top: 120%;
+                }
+
+        div {
+            display: flex;
+            flex-direction: column;
+
+            .add-button {
+                text-decoration: none;
+                color: white;
+                letter-spacing: 2px;
+                box-shadow: 2px 2px 2px  rgb(136, 136, 136);
+                background-color: rgb(179, 179, 179);
+                text-align:center;
+                padding: 5px;
+            }
+            .delete-button {
+                text-decoration: none;
+                color: white;
+                letter-spacing: 2px;
+                box-shadow: 2px 2px 2px  rgb(136, 136, 136);
+                background-color: rgb(179, 179, 179);
+                text-align:center;
+                padding:5px;
+                margin-bottom: 15px;
+            }
+        }
+
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    .wishlist-wrapper {
+        .wishlist-item {
+            width: 50%;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .wishlist-wrapper {
+        .wishlist-item {
+            width: 40%;
+        }
+    }
+}

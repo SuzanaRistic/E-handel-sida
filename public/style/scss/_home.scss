@@ -2,52 +2,70 @@
 
 .body-page {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
 }
-
-.home-box {
-    font-family: 'Great Vibes';
-    font-size: 80px;
-    height: 80px;
+.header {
     background-image: url('../img/Bakgrund/background-image.jpeg');
-    background-size: cover;
-    opacity: 0.7;
-    letter-spacing: 10px;
-    word-spacing: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     text-align: center;
-
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 65px;
 }
 
-.login-button, .register-button, .logout-button {
-    font-family: Optima, sans-serif;
-    font-size: 15px;
+.nav-bar {
+    display: none;
+}
+
+.header-box {
+    font-family: 'Great Vibes';
+    font-size: 35px;
+    background-size: cover;
+    opacity: 0.7;
     letter-spacing: 0;
     word-spacing: 0;
+    width: 65%;
+    text-align: right;
+}
+
+.member-box {
+    width: 35%;
+    text-align: center;
+    
+}
+.login-button, .register-button, .admin-button, .logout-button, .wishlist-button {
+    font-family: Optima, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0;
     }
 
-.home-button, .category-button, .login-button, .register-button, .logout-button {
+.home-button, .category-button, .login-button, .register-button, .admin-button, .logout-button, .wishlist-button {
     color: $bt-color;
     text-decoration: $clean;
 }
 
 .category-button-box, .category-button {
     background-color: $bg-color;
-    height: 50px;
-    margin-top: 200px;
+    height: 40px;
+    margin-top: 150px;
     text-transform: uppercase;
     font-family: Optima, sans-serif;
-    font-size: 42px;
+    font-size: 32px;
 }
 .category-button-box {
     opacity: 0.7;
 }
 
 .category-box {
-    width: 49%;
-    height: 400px;
+    width: 100%;
+    height: 300px;
     background-size: cover;
     background-position: $middle;
     margin-top: 15px;
@@ -72,7 +90,51 @@ background-image: url('../img/kategorier/tulpaner.jpg');
     }
 
 .vases-box {
-        width: 100%;
         background-image: url('../img/kategorier/krukor\ och\ vaser.jpg');
         background-position: bottom;
+    }
+
+    
+    @media screen and (min-width: 1024px) {
+
+        .body-page {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        
+        .header-box {
+            font-size: 70px;
+            word-spacing: 10px;
+            letter-spacing: 5px;
+            text-align: right;
+            width: 70%;
+        }
+        
+        .member-box {
+            text-align: center;
+            word-spacing: 10px;
+            width: 30%;
+            
+        }
+
+        .login-button, .register-button, .admin-button, .logout-button {
+            font-size: 15px;
+            }
+        
+        .category-button-box, .category-button {
+            height: 50px;
+            margin-top: 200px;
+            font-size: 42px;
+        }
+        
+        .category-box {
+            width: 49%;
+            height: 400px;
+        }
+        
+        .vases-box {
+            width: 100%;
+        }
+        
     }

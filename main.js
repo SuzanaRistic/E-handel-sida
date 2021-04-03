@@ -7,6 +7,7 @@ const userRouter = require("./routes/userRouter");
 const adminRouter = require("./routes/adminRouter")
 const productRouter = require("./routes/productRouter");
 const checkoutRouter = require("./routes/checkoutRouter");
+const wishlistRouter = require("./routes/wishlistRouter");
 const cookieParser = require("cookie-parser")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -46,3 +47,4 @@ app.use(userRouter);
 app.use(productRouter);
 app.use(adminRouter);
 app.use(checkoutRouter)
+app.use(wishlistRouter)

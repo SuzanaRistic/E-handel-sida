@@ -12,7 +12,8 @@ const userSchema = new mongoose.Schema({
 
   wishlist: [{
     type: mongoose.Schema.ObjectId,
-    ref: "Product"
+    ref: "Product",
+    productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" }
   }],
 });
 

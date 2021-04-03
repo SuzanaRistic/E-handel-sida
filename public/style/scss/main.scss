@@ -1,10 +1,19 @@
 @import "./imports";
 @import './home';
+@import './navbar';
 @import './product';
 @import "./login";
-
+@import "./checkout";
+@import "./specific";
+@import "./wishlist";
+@import "./payment";
+@import "./success";
+@import "./shoppingCart";
+@import "./admin";
 * {
    box-sizing: border-box;
+   
+
 }
 
 body{
@@ -15,3 +24,4 @@ body{
    height: 100vh;
    
 }
+
