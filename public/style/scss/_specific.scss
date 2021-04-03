@@ -3,6 +3,8 @@
 @import './mixins';
 
 @include nav-bar-mixin;
+@include mobile-nav-bar;
+
 
 .specific-page-container {
     background-image: url("../img/Bakgrund/background-image.jpeg");

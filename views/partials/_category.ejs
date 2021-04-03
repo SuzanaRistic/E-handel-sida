@@ -7,12 +7,11 @@ src="https://kit.fontawesome.com/7002be5812.js"
 crossorigin="anonymous"
 ></script>
 <nav class="header">
-  <div class="empty"></div>
   <div class="header-box"><a href="/" class="home-button">The Bloom Room</a></div>
   <div class="member-box">
     <%if (user != undefined){%>
       <%if (user.user.role == 'Admin'){%>
-        <a id="admin-link" href="/admin">Admin</a>
+        <a class="admin-button" id="admin-link" href="/admin">Admin</a>
      <% }%>
    <% }%>
     <%if (token == undefined) {%>
