@@ -8,7 +8,7 @@ var multer = require('multer');
 const { Product, validateProduct } = require("../models/productSchema");
 const path = require("path")
 
-router.get("/admin", jwtDecode, adminGET)
+router.get("/admin", jwtDecode,shoppingCart, adminGET)
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
