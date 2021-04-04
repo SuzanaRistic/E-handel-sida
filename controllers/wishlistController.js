@@ -12,11 +12,7 @@ const wishlistGET = async (req, res) => {
     wishlist: user.wishlist,
     token,
     shoppingCart: req.shoppingCart,
-<<<<<<< HEAD
-    user: req.userFull
-=======
     user: req.userFull,
->>>>>>> 6d4dfd04c8ef14e7d5b2b4d3ec8d7135caad0300
   });
 };
 
