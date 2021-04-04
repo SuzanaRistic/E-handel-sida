@@ -1,29 +1,27 @@
-<%if(error!=""){%>
-    <%- include("partials/_error.ejs") %>
-<%}%>
+<%if(error!=""){%> <%- include("partials/_error.ejs") %> <%}%>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset</title>
     <link href="/css/main.css" rel="stylesheet" />
-    <link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css?family=Great Vibes"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="user-handling-bkg">
-        <div class="user-handling-container">
-            <div class="user-handling-banner">
-                <h1>The Bloom Room</h1>
-            </div>
-
-    <div>
-        Check your e-mail. Otherwise <a href="/reset">Resend </a>
-    </div>
+      <div class="user-handling-container">
+        <div class="user-handling-banner">
+          <h1>The Bloom Room</h1>
         </div>
+
+        <div>Check your e-mail. Otherwise <a href="/reset">Resend </a></div>
+      </div>
     </div>
-    
-</body>
+  </body>
 </html>

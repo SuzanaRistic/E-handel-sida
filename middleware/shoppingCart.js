@@ -3,7 +3,13 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const Cart = require("../models/cartSchema");
 const { User } = require("../models/userSchema");
+/* Skrivet som middleware för att enkelt ge tillgång till shoppingcart
+på alla sidor, ger också tillgång till userobjektet så med mer tid
+hade man kunnat ta bort decodeUser helt 
+Kollar hela tiden att inte något produktid är null, ifall en admin
+skulle ha tagit bort ett objekt från databasen medan användare har den i cart
 
+*/
 const shoppingCart = async (req, res, next) => {
   try {
     const token = req.cookies.jwToken;
@@ -15,13 +21,14 @@ const shoppingCart = async (req, res, next) => {
     let cart = await Cart.findOne({ userId: user._id }).populate(
       "products.productId"
     );
-    console.log(cart.products)
+
+
     let index = cart.products.findIndex((x) => x.productId == null);
     if (index != -1 ){
       cart.products.splice([index], 1)
       cart = await cart.save()
     }
-    console.log(index)
+   
     genTotal(cart);
     
     req.shoppingCart = cart;

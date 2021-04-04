@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Joi = require('joi');
-//require prod. schema
+
 const userSchema = new mongoose.Schema({
   firstName: { type: String, require: true },
   lastName: { type: String, require: true },

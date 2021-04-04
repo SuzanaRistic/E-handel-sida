@@ -7,12 +7,16 @@ const wishlistGET = async (req, res) => {
   const token = req.cookies.jwToken;
 
   await user.populate("wishlist").execPopulate();
-  if (user.wishlist.length == 0) return res.redirect("/")
+  if (user.wishlist.length == 0) return res.redirect("/");
   res.render("wishlist.ejs", {
     wishlist: user.wishlist,
     token,
     shoppingCart: req.shoppingCart,
+<<<<<<< HEAD
     user: req.userFull
+=======
+    user: req.userFull,
+>>>>>>> 6d4dfd04c8ef14e7d5b2b4d3ec8d7135caad0300
   });
 };
 
@@ -67,7 +71,7 @@ const addToCartFromList = async (req, res) => {
     }
 
     let index = cart.products.findIndex((x) => x.productId == productId);
-    console.log(index);
+
     if (index === -1) {
       cart.products.push({ productId: productId, quantity: 1 });
       cart = await cart.save();
@@ -77,7 +81,7 @@ const addToCartFromList = async (req, res) => {
       wishlist.splice([indexWish], 1);
 
       user = await user.save();
-      if (wishlist.length == 0) return res.redirect("/")
+      if (wishlist.length == 0) return res.redirect("/");
       return res.redirect(req.headers.referer);
     }
 
@@ -87,11 +91,11 @@ const addToCartFromList = async (req, res) => {
     cart = await cart.save();
 
     let indexWish = wishlist.findIndex((x) => x._id == productId);
-    console.log(indexWish + "laskdnasldnsl");
+
     wishlist.splice([indexWish], 1);
-    console.log("spliced");
+
     user = await user.save();
-    if (wishlist.length == 0) return res.redirect("/")
+    if (wishlist.length == 0) return res.redirect("/");
 
     return res.redirect(req.headers.referer);
   } catch (error) {

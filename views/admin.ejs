@@ -1,36 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
     <link href="/css/main.css" rel="stylesheet" />
-    <link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
-</head>
-<body>
-
+    <link
+      href="https://fonts.googleapis.com/css?family=Great Vibes"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="user-handling-bkg">
-        <div class="user-handling-container">
-            <div class="user-handling-banner">
-                <h1>Admin</h1>
-            </div>
-    <%if(error!=""){%>
-        <%- include("partials/_error.ejs") %>
-    <%}%>
+      <div class="user-handling-container">
+        <div class="user-handling-banner">
+          <h1>Admin</h1>
+        </div>
+        <%if(error!=""){%> <%- include("partials/_error.ejs") %> <%}%>
 
-    <form method="POST" action="/admin"enctype="multipart/form-data">
-    <input type="text" name="name" placeholder="Name">
-    <input type="text" name="category" placeholder="Category">
-    <input type="text" name="description" placeholder="Description">
-    <input type="number" name="price" placeholder="price">
+        <form method="POST" action="/admin" enctype="multipart/form-data">
+          <input type="text" name="name" placeholder="Name" />
+          <input type="text" name="category" placeholder="Category" />
+          <input type="text" name="description" placeholder="Description" />
+          <input type="number" name="price" placeholder="price" />
 
-    <input type="file" id="image" name="image">    
-    <button>Submit</button>
-
-    
-    </form>
-            </div>
-            </div>
-</body>
+          <input type="file" id="image" name="image" />
+          <button>Submit</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
