@@ -79,7 +79,7 @@ const shoppingSuccessGET = async (req, res) => {
   );
   let cartTotal = await Cart.findOne({ userId: user.id });
   const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
-  const customer = await stripe.customers.retrieve(session.customer);
+
 
   let shipping = session.total_details.amount_shipping / 100;
 

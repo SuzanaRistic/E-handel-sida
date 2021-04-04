@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Joi = require('joi');
-//require prod. schema
+
 const userSchema = new mongoose.Schema({
   firstName: { type: String, require: true },
   lastName: { type: String, require: true },
@@ -27,17 +27,7 @@ function validateUser(user) {
   return schema.validate(user)
 }
 
-/* userSchema.methods.addProductToCart =  function(productId){
-  this.shoppingCart.push(productId);
-  this.save();
-}
 
-userSchema.methods.removeProducts = function (productId) {
-  const index = this.shoppingCart.indexOf(productId);
-  this.shoppingCart.splice(index, 1);
-
-this.save()
-} */
 
 const User = mongoose.model("User", userSchema);
 module.exports = {

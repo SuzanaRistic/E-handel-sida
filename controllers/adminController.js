@@ -5,7 +5,7 @@ const adminGET = async (req, res) => {
   const token = req.cookies.jwToken;
 
   const user = await User.findOne({ email: req.email });
-  console.log(user);
+ 
   if (user.role != "Admin") {
     return res.render("index.ejs", {
       error: "Access denied",
