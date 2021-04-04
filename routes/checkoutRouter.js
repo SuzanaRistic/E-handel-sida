@@ -5,13 +5,7 @@ const {checkoutGET, checkoutPOST, paymentGET, shoppingSuccessGET} = require("../
 
 router.get("/checkout" ,shoppingCart, checkoutGET)
 router.post("/checkout" ,shoppingCart,checkoutPOST)
-
 router.get("/payment" ,shoppingCart, paymentGET)
-
-
-
 router.get("/order/success/", shoppingCart, shoppingSuccessGET)
-
-
 router.get('/order/success', shoppingSuccessGET)
 module.exports = router;

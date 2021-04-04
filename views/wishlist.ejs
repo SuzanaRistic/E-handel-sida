@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link href="/css/main.css" rel="stylesheet" />
-</head>
-<body>
+  </head>
+  <body>
     <%- include("partials/_category.ejs") %>
 
     <div class="wishlist-wrapper">
-        <h1> WISHLIST </h1>
-    
-    <% for(let i = 0; i < wishlist.length; i++){%>
-        <div class="wishlist-item">
-            <div class="image-container">
-                <img id="image" src="/images/<%=wishlist[i].image.path%>">
-            </div>
-            
-            <div>
-                <p id="name-p"><strong><%=wishlist[i].name%></strong></p>
-                <p id="price-p"><%=wishlist[i].price%> SEK</p>
+      <h1>WISHLIST</h1>
 
-                <a class="add-button" id="add-to-cart" href="/addToCartFromList/<%=wishlist[i]._id%>"> Add to cart </a><br>
-                <a class="delete-button" href="/deleteWishlist/<%=wishlist[i]._id%>"> Delete </a>
-            </div>
+      <% for(let i = 0; i < wishlist.length; i++){%>
+      <div class="wishlist-item">
+        <div class="image-container">
+          <img id="image" src="/images/<%=wishlist[i].image.path%>" />
         </div>
-    <%}%> 
+
+        <div>
+          <p id="name-p"><strong><%=wishlist[i].name%></strong></p>
+          <p id="price-p"><%=wishlist[i].price%> SEK</p>
+
+          <a
+            class="add-button"
+            id="add-to-cart"
+            href="/addToCartFromList/<%=wishlist[i]._id%>"
+          >
+            Add to cart </a
+          ><br />
+          <a class="delete-button" href="/deleteWishlist/<%=wishlist[i]._id%>">
+            Delete
+          </a>
+        </div>
+      </div>
+      <%}%>
     </div>
-</body>
+  </body>
 </html>

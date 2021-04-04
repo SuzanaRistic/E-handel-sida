@@ -16,9 +16,7 @@
     ></script>
   </head>
   <body>
-
     <div class="checkout-bkg">
-     
       <div class="checkout-container">
         <div class="checkout-banner">
           <h1>Checkout</h1>
@@ -58,42 +56,42 @@
           <p id="checkout-total">Total:<%=shoppingCart.total%>:-</p>
         </div>
         <div class="checkout-text-div">
-        <span>Forgot something?</span><a href="/">Keep shopping!</a>
-    </div>
-    <div id="checkout-delivery-options">
-        <h2>Delivery options</h2>
-        <form action="/checkout" method="POST">
+          <span>Forgot something?</span><a href="/">Keep shopping!</a>
+        </div>
+        <div id="checkout-delivery-options">
+          <h2>Delivery options</h2>
+
+          <!-- Values här är skapade i stripe, och inskrivna här för att ge tillgång till dem när man väljer alternativ -->
+          <form action="/checkout" method="POST">
             <label>
-          <input
-            type="radio"
-            value="shr_1IYub7BE1mfx14b2yBIZoV46"
-            name="deliveryOption"
-          />
-         DHL ombud <strong> 79kr </strong>
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="shr_1IYuaeBE1mfx14b2rf2SUV6K"
-            name="deliveryOption"
-          />
-          Budbee hemleverans <strong> 129kr </strong>
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="shr_1IYuZgBE1mfx14b2eFBbUzzV"
-            name="deliveryOption"
-          />
-         DHL hemleverans <strong> 149kr </strong>
-        </label>
-          <button>Proceed to payment</button>
-        </form>
-        
-    </div>
+              <input
+                type="radio"
+                value="shr_1IYub7BE1mfx14b2yBIZoV46"
+                name="deliveryOption"
+              />
+              DHL ombud <strong> 79kr </strong>
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="shr_1IYuaeBE1mfx14b2rf2SUV6K"
+                name="deliveryOption"
+              />
+              Budbee hemleverans <strong> 129kr </strong>
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="shr_1IYuZgBE1mfx14b2eFBbUzzV"
+                name="deliveryOption"
+              />
+              DHL hemleverans <strong> 149kr </strong>
+            </label>
+            <button>Proceed to payment</button>
+          </form>
+        </div>
       </div>
       <div id="footer"></div>
     </div>
-
   </body>
 </html>
