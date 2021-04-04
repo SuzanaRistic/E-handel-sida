@@ -3,31 +3,33 @@
   rel="stylesheet"
 />
 <script
-src="https://kit.fontawesome.com/7002be5812.js"
-crossorigin="anonymous"
+  src="https://kit.fontawesome.com/7002be5812.js"
+  crossorigin="anonymous"
 ></script>
 <nav class="header">
-  <div class="empty"></div>
-  <div class="header-box"><a href="/" class="home-button">The Bloom Room</a></div>
+  <div class="header-box">
+    <a href="/" class="home-button">The Bloom Room</a>
+  </div>
   <div class="member-box">
+    
     <%if (user != undefined){%>
       <%if (user.user.role == 'Admin'){%>
-        <a id="admin-link" href="/admin">Admin</a>
-     <% }%>
-   <% }%>
-    <%if (token == undefined) {%>
+    <a class="admin-button" id="admin-link" href="/admin">Admin</a>
+    <% }%> <% }%> <%if (token == undefined) {%>
     <a class="login-button" href="/login">Login</a>
     <a class="register-button" href="/register">Register</a>
     <%} else { %>
     <a class="logout-button" href="/logout">Logout</a>
-    
-    <a class="wishlist-button" href="/wishlist"><i class="far fa-heart" style="font-size:15px;"></i></a>
-    <button id="cart-button" onclick="cartFunction()" class="fas fa-shopping-cart"></button>
-    <%if (shoppingCart){%>
 
-      <%- include("_shoppingCart.ejs") %> 
-    <%}%>
-
+    <a class="wishlist-button" href="/wishlist"
+      ><i class="far fa-heart" style="font-size: 15px"></i
+    ></a>
+    <button
+      id="cart-button"
+      onclick="cartFunction()"
+      class="fas fa-shopping-cart"
+    ></button>
+    <%if (shoppingCart){%> <%- include("_shoppingCart.ejs") %> <%}%>
   </div>
   <%}%>
 </nav>
@@ -38,7 +40,6 @@ crossorigin="anonymous"
   <a class="nav-box" href="/tulips"> Tulips</a>
   <a class="nav-box" href="/bouquets"> Bouquets</a>
   <a class="nav-box" href="/vases"> Vases & Pots</a>
-
 </div>
 
 <script>
@@ -46,10 +47,8 @@ crossorigin="anonymous"
     let x = document.getElementById("shoppingCart");
     if (x.style.display === "none") {
       x.style.display = "block";
-      
     } else {
-      x.style.display = "none"; 
-    
+      x.style.display = "none";
     }
   }
 </script>

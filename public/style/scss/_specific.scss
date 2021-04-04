@@ -3,6 +3,8 @@
 @import './mixins';
 
 @include nav-bar-mixin;
+@include mobile-nav-bar;
+
 
 .specific-page-container {
     background-image: url("../img/Bakgrund/background-image.jpeg");
@@ -65,15 +67,12 @@
 }
 
 
-@media screen and (min-width: 768px) {
-    .specific-product-container {
-        display: flex;
-        flex-direction: row;
-        padding: 10px;
-    }
-}
+
 
 @media screen and (min-width: 1024px) {
+    
+    @include nav-bar-mixin;
+
     .specific-page-container {
         .specific-product-container {
             max-width: 70%;

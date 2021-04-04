@@ -3,51 +3,50 @@
 .body-page {
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 }
 .header {
+    background-image: url('../img/Bakgrund/background-image.jpeg');
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    text-align: center;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 50px;
+    height: 65px;
 }
 
 .nav-bar {
     display: none;
 }
 
-.empty {
-    width: 20%;
-}
-
 .header-box {
     font-family: 'Great Vibes';
-    font-size: 50px;
-    background-image: url('../img/Bakgrund/background-image.jpeg');
+    font-size: 35px;
     background-size: cover;
     opacity: 0.7;
     letter-spacing: 0;
     word-spacing: 0;
-    text-align: center;
-    width: 60%;
+    width: 65%;
+    text-align: right;
 }
 
 .member-box {
-    width: 20%;
+    width: 35%;
+    text-align: center;
+    
 }
-.login-button, .register-button, .logout-button, .wishlist-button {
+.login-button, .register-button, .admin-button, .logout-button, .wishlist-button {
     font-family: Optima, sans-serif;
     font-size: 10px;
     letter-spacing: 0;
     }
 
-.home-button, .category-button, .login-button, .register-button, .logout-button, .wishlist-button {
+.home-button, .category-button, .login-button, .register-button, .admin-button, .logout-button, .wishlist-button {
     color: $bt-color;
     text-decoration: $clean;
 }
@@ -99,25 +98,27 @@ background-image: url('../img/kategorier/tulpaner.jpg');
     @media screen and (min-width: 1024px) {
 
         .body-page {
+            display: flex;
             flex-direction: row;
-            flex-wrap: wrap;
         }
         
-        .header {
-            height: 90px;
-        }
-
+        
         .header-box {
-            font-size: 80px;
-            letter-spacing: 10px;
-            word-spacing: 15px;
-        }
-
-        .member-box {
-            word-spacing: 15px;
+            font-size: 70px;
+            word-spacing: 10px;
+            letter-spacing: 5px;
+            text-align: right;
+            width: 70%;
         }
         
-        .login-button, .register-button, .logout-button {
+        .member-box {
+            text-align: center;
+            word-spacing: 10px;
+            width: 30%;
+            
+        }
+
+        .login-button, .register-button, .admin-button, .logout-button {
             font-size: 15px;
             }
         
