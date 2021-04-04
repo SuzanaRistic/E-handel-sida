@@ -17,12 +17,9 @@ function validateProduct(product) {
     name: Joi.string().min(3).max(30).required(),
     description: Joi.string().required(),
     price: Joi.number().integer().required()
-    // IMAGE VALIDATION? joi-image-extension
   })
   return schema.validate(product)
 }
-
-//lägga till bilder
 
 const Product = mongoose.model("Product", productSchema);
 
