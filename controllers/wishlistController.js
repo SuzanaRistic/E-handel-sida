@@ -1,5 +1,4 @@
 const { User } = require("../models/userSchema");
-const { Product } = require("../models/productSchema");
 const Cart = require("../models/cartSchema");
 
 const wishlistGET = async (req, res) => {
@@ -13,7 +12,7 @@ const wishlistGET = async (req, res) => {
     wishlist: user.wishlist,
     token,
     shoppingCart: req.shoppingCart,
-    user:req.userFull
+    user: req.userFull
   });
 };
 

@@ -1,7 +1,5 @@
-const shoppingCart = require("../middleware/shoppingCart");
-const { Product, validateProduct } = require("../models/productSchema");
+const { Product } = require("../models/productSchema");
 const { User } = require("../models/userSchema");
-const jwt = require("jsonwebtoken");
 
 
 const plantGET = async (req, res) => {
@@ -27,7 +25,7 @@ async function pagination(req, res, category) {
   try {
     const dataPerPage = 6;
     const dataToShow = page * dataPerPage;
-    const plants = await Product.find({ category: category })
+    const product = await Product.find({ category: category })
       .limit(dataToShow)
       .sort({ price: sorted });
     const totalData = await Product.find({
@@ -39,14 +37,14 @@ async function pagination(req, res, category) {
 
     res.render("product.ejs", {
       error: "",
-      product: plants,
-      dataToShow: dataToShow,
-      dataPerPage: dataPerPage,
-      totalData: totalData,
-      page: page,
+      product,
+      dataToShow,
+      dataPerPage,
+      totalData,
+      page,
       shoppingCart: req.shoppingCart,
       token,
-      user:req.userFull
+      user: req.userFull
     });
   } catch (error) {
     res.render("product.ejs", { error: error });
@@ -55,19 +53,19 @@ async function pagination(req, res, category) {
 
 const specificGET = async (req, res) => {
   const token = req.cookies.jwToken;
-  
+
 
   try {
     const product = await Product.findOne({ _id: req.params.id });
 
     res.render("specificProduct.ejs", {
       error: "",
-      product: product,
+      product,
       shoppingCart: req.shoppingCart,
       token,
-      user:req.userFull,
-      editMode:false,
-  
+      user: req.userFull,
+      editMode: false,
+
     });
   } catch (error) {
     res.render("product.ejs", { error: "Product not found", token });
